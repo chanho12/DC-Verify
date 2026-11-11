@@ -1,8 +1,15 @@
-"""Dispatch one existing stage command. This is not an end-to-end workflow runner."""
+"""Run a review workflow or an individual existing stage."""
 import argparse
 import importlib
 import json
 import sys
+from datetime import date
+
+
+def publication_date(value):
+    from dc_verify.step.step8.code.source_admission import date_window
+    date_window(value)
+    return value
 
 STAGES = {
     'ocr':'step1.code.OCR', 'plan':'step2.code.controller', 'analysis':'step3.code.analysis',
@@ -22,9 +29,23 @@ def main(argv=None):
     sub.add_parser('check-config',help='Check key configuration only; never calls API')
     demo=sub.add_parser('offline-demo',help='Synthetic data through existing pure guards, no Agent execution')
     demo.add_argument('--output-dir')
+    verify=sub.add_parser('verify',help='PDF + request through connected stages to a final review report')
+    verify.add_argument('--pdf',required=True)
+    verify.add_argument('--request',required=True,help='검토 질문')
+    verify.add_argument('--target',dest='targets',action='append',help='검토 대상; 생략 시 Controller가 요청과 OCR에서 식별')
+    verify.add_argument('--as-of',dest='as_of',type=lambda s:date.fromisoformat(s).isoformat(),help='검토 기준일 YYYY-MM-DD')
+    verify.add_argument('--published-at',dest='published_at',type=publication_date,help='사용자가 확인한 문서 발행일; 미입력 시 미확인')
+    verify.add_argument('--official-domain',dest='official_domains',action='append',help='Tavily 검색/수집을 허용할 공식 호스트')
+    verify.add_argument('--output-dir')
+    verify.add_argument('--document-id')
+    verify.add_argument('--pages',type=lambda s:[int(n) for n in s.split(',')],help='Controller가 허용한 분석 페이지 중 선택; 생략 시 전부')
     run=sub.add_parser('run',help='Run exactly one existing stage; inspect its --help first')
     run.add_argument('stage',choices=sorted(STAGES));run.add_argument('stage_args',nargs=argparse.REMAINDER)
     args=parser.parse_args(argv)
+    if args.command=='verify':
+        from dc_verify.pipeline import execute
+        options=vars(args).copy();options.pop('command')
+        return 0 if execute(**options)['status'] in {'SUCCESS','SUCCESS_WITH_WARNINGS'} else 1
     if args.command=='stages':print(json.dumps(STAGES,indent=2));return 0
     if args.command=='offline-demo':
         from dc_verify.demo import execute

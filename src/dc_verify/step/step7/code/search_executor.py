@@ -351,6 +351,8 @@ def _finalize(run):
     budget = {t["issue_id"]: remaining_attempts(incoming, state, t["issue_id"]) for t in incoming["search_plan"]["search_plan"]}
     write_json(run / "search_budget_updated.json", {"remaining_attempts": budget, "counts_only_executed_search_actions": True})
     collected = [d for d in discovered if d.get("access_status") == "DOWNLOADED"]
+    # Downstream preparation and Controller restoration consume this actual-download manifest.
+    write_json(run / "collected_documents.json", collected)
     uncollected = [d for d in discovered if d.get("access_status") != "DOWNLOADED"]
     write_json(run / "candidate_manifest.json", state["documents"])
     write_json(run / "source_verification_input.json", {"review_goal": incoming["search_plan"]["review_goal"],

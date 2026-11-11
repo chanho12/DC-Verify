@@ -94,8 +94,8 @@ def request_pdf_ocr(pdf_bytes: bytes, filename: str, system_prompt: str, user_pr
         raise ValueError("max_output_tokens는 1~128000으로 지정하세요.")
     if not pdf_bytes or len(pdf_bytes) >= 50_000_000 or b"%PDF-" not in pdf_bytes[:1024]:
         raise ValueError("유효한 50MB 미만 PDF 데이터가 필요합니다.")
-    config = config or load_config()
     if client is None:
+        config = config or load_config()
         with create_client(config, timeout=600.0) as owned_client:
             return request_pdf_ocr(pdf_bytes, filename, system_prompt, user_prompt,
                                    config, owned_client, max_output_tokens)
@@ -126,8 +126,8 @@ def request_structured_output(system_prompt, user_prompt, schema, config=None, c
     """Pydantic 스키마로 JSON 계획을 받는다. Agent·Tool 실행은 호출자가 결정한다."""
     if not system_prompt.strip() or not user_prompt.strip():
         raise ValueError("시스템·사용자 프롬프트가 필요합니다.")
-    config = config or load_config()
     if client is None:
+        config = config or load_config()
         with create_client(config, timeout=180.0) as owned_client:
             return request_structured_output(system_prompt, user_prompt, schema, config,
                                              owned_client, max_output_tokens)
@@ -163,8 +163,8 @@ def request_image_verification(system_prompt, user_prompt, images, schema,
     """문서·페이지 라벨과 원본에서 렌더링한 PNG를 Structured Outputs에 전달."""
     if not images or not system_prompt.strip() or not user_prompt.strip():
         raise ValueError("검증할 원본 이미지와 프롬프트가 필요합니다.")
-    config = config or load_config()
     if client is None:
+        config = config or load_config()
         with create_client(config, timeout=240.0) as owned_client:
             return request_image_verification(system_prompt, user_prompt, images, schema,
                                               config, owned_client, max_output_tokens)

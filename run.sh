@@ -25,5 +25,7 @@ fi
 export PYTHONPATH="$dc_verify_root/src${PYTHONPATH:+:$PYTHONPATH}"
 if [ "$#" -eq 0 ]; then
     set -- --help
+elif [ "$1" = "--pdf" ]; then
+    set -- verify "$@"
 fi
 exec "$dc_verify_python" -m dc_verify.cli "$@"
