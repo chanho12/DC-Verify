@@ -28,4 +28,4 @@ if [ "$#" -eq 0 ]; then
 elif [ "$1" = "--pdf" ]; then
     set -- verify "$@"
 fi
-exec "$dc_verify_python" -m dc_verify.cli "$@"
+exec "$dc_verify_python" "$dc_verify_root/DC_verify.py" "$@"

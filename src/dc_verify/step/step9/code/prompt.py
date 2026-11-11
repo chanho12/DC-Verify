@@ -32,6 +32,7 @@ Tool은 RUNTIME_TOOLS에 있는 실행 가능한 항목만 선택한다. 세션 
 관찰된 실행/완료 Claim 키는 observed_execution_claim_keys에 빠짐없이 복사한다.
 current_operation_independently_verified는 EVIDENCE_OBSERVATION 값을 유지한다.
 next_action은 한 개이며 첫 updated_plan 항목과 action/issue_ids가 같아야 한다.
+next_action.target은 종료 결정을 포함해 review_context.target_projects의 실제 대상 문자열 하나를 정확히 복사한다. 검토 목표 문장으로 대체하지 않는다.
 selected_tool_id는 REPLAN일 때 실제 호환 Tool, 종료 결정이면 null이다.
 REPLAN은 should_stop=false, COMPLETE/DEFER/REQUEST_HUMAN_REVIEW는 true다.
 불완전한 상태에서 종료한다면 추가 실사 질문을 human_review_questions에 구체적으로 기록한다.

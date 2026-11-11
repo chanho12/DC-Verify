@@ -249,8 +249,12 @@ def import_receipts(run, receipt_files):
                 raise ValueError("실제 검색 한도 초과")
             if receipt["query"] != task["query"] and not receipt.get("adjustment_reason"):
                 raise ValueError("검색어 변경 이유가 필요합니다.")
-            if any(a["issue_id"] == task["issue_id"] and query_key(a["query_executed"]) == query_key(receipt["query"]) for a in state["attempts"]):
-                raise ValueError("동일 검색어 반복. 기존 영수증을 재사용하세요.")
+            repeated=[a for a in state['attempts'] if a['issue_id']==task['issue_id'] and query_key(a['query_executed'])==query_key(receipt['query'])]
+            if repeated:
+                previous=repeated[-1];code=previous.get('http_status') or 0
+                retryable=previous['execution_status']=='TOOL_FAILED' and (code in {408,409,429} or code>=500 or previous.get('error_type') in {'URLError','TimeoutError','APIConnectionError','APITimeoutError'})
+                if not (retryable and receipt.get('retry_of_attempt_id')==previous['attempt_id']):
+                    raise ValueError('동일 검색어 반복. 일시적 기술 오류의 명시적 재시도만 허용합니다.')
             attempt_id = "attempt_" + digest[:16]
             raw_path = run / "raw_search" / (attempt_id + ".json")
             raw_path.parent.mkdir(parents=True, exist_ok=True)
@@ -285,6 +289,7 @@ def import_receipts(run, receipt_files):
                 attempt["execution_status"] = "PARSE_FAILED"
             if receipt.get("error"):
                 attempt["error_type"] = receipt["error"].get("type", "ToolError")
+                attempt['http_status']=receipt['error'].get('http_status')
             state["history"]["action_history"][-1]["status"] = attempt["execution_status"]
             state["history"]["external_search_executed"] = True
             state["attempts"].append(attempt)

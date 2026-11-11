@@ -45,7 +45,7 @@ def tavily_search(query, key, official_hosts, cutoff):
         return json.loads(raw)
 
 
-def execute_api(run, key=None, transport=tavily_search):
+def execute_api(run, key=None, transport=tavily_search, guard=None):
     """등록된 PYTHON 도구로만 실행한다. 오류 응답 본문·인증 헤더는 기록하지 않는다."""
     run = Path(run)
     key = key or load_tavily_key()
@@ -65,20 +65,36 @@ def execute_api(run, key=None, transport=tavily_search):
             continue
         if any(a["issue_id"] == task["issue_id"] and executor.query_key(a["query_executed"]) == executor.query_key(task["query"]) for a in state["attempts"]):
             continue
-        receipt = {"task_id": task["task_id"], "tool": tool["tool_id"], "query": task["query"],
-            "provenance": "MOCK" if state["run_mode"] == "MOCK" else "LIVE_PYTHON_API",
-            "execution_context": "PYTHON", "executed": True,
-            "started_at": executor.now()}
-        try:
-            raw = transport(task["query"], key, runtime.get("official_hosts", []), incoming["search_plan"]["as_of_date"])
-            receipt["response"] = {**raw, "results": [{**r, "search_text": r.get("content", "")} for r in raw.get("results", [])]}
-        except Exception as error:
-            receipt.update(response=None, error={"type": type(error).__name__,
-                "http_status": error.code if isinstance(error, HTTPError) else None})
-        receipt["finished_at"] = executor.now()
-        path = run / "api_receipts" / (task["task_id"] + ".json")
-        executor.write_json(path, receipt)
-        executor.import_receipts(run, [path])
+        previous=None
+        for retry in range(3):
+            state=executor.read_json(run/'state.json')
+            if not executor.remaining_attempts(incoming,state,task['issue_id']):break
+            if guard is not None:
+                try: guard.charge('search_official')
+                except ValueError:
+                    executor.write_json(run / 'runtime_guard_stop.json', {'status':'BUDGET_STOP','executed':False})
+                    break
+                guard.ledger.record(guard.run_id,'search_request','7',{'task_id':task['task_id'],'query':task['query'],'retry':retry})
+            receipt = {"task_id": task["task_id"], "tool": tool["tool_id"], "query": task["query"],
+                "provenance": "MOCK" if state["run_mode"] == "MOCK" else "LIVE_PYTHON_API",
+                "execution_context": "PYTHON", "executed": True, "started_at": executor.now()}
+            if previous:receipt['retry_of_attempt_id']=previous
+            try:
+                raw = transport(task["query"], key, runtime.get("official_hosts", []), incoming["search_plan"]["as_of_date"])
+                receipt["response"] = {**raw, "results": [{**r, "search_text": r.get("content", "")} for r in raw.get("results", [])]}
+            except Exception as error:
+                receipt.update(response=None, error={"type": type(error).__name__,
+                    "http_status": error.code if isinstance(error, HTTPError) else None})
+            receipt["finished_at"] = executor.now()
+            path = run / "api_receipts" / (task["task_id"] + ('_retry_'+str(retry) if retry else '') + ".json")
+            executor.write_json(path, receipt)
+            executor.import_receipts(run, [path])
+            error=receipt.get('error') or {};code=error.get('http_status') or 0
+            if not (code in {408,409,429} or code>=500 or error.get('type') in {'URLError','TimeoutError'}):break
+            previous=executor.read_json(run/'state.json')['attempts'][-1]['attempt_id']
+            if retry<2:
+                import time
+                time.sleep(2**retry)
     return executor.finalize(run)
 
 

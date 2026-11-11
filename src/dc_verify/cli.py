@@ -39,11 +39,16 @@ def main(argv=None):
     verify.add_argument('--output-dir')
     verify.add_argument('--document-id')
     verify.add_argument('--pages',type=lambda s:[int(n) for n in s.split(',')],help='Controller가 허용한 분석 페이지 중 선택; 생략 시 전부')
+    verify.add_argument('--resume',help='같은 PDF·질문·옵션으로 중단된 review_실행ID 폴더에서 재개')
+    verify.add_argument('--refresh',action='store_true',help='단계별 API 결과 캐시 대신 다시 실행')
+    verify.add_argument('--max-calls',type=int,default=64,help='임베딩·재시도 포함 모델 API 요청 상한')
+    verify.add_argument('--max-tokens',type=int,default=2000000,help='모델 토큰 예산; 요청 전 여유량 검사')
+    verify.add_argument('--max-searches',type=int,default=8,help='실제 외부 검색 요청 상한; 쟁점별 제한도 적용')
     run=sub.add_parser('run',help='Run exactly one existing stage; inspect its --help first')
     run.add_argument('stage',choices=sorted(STAGES));run.add_argument('stage_args',nargs=argparse.REMAINDER)
     args=parser.parse_args(argv)
     if args.command=='verify':
-        from dc_verify.pipeline import execute
+        from dc_verify.graph_runner import execute
         options=vars(args).copy();options.pop('command')
         return 0 if execute(**options)['status'] in {'SUCCESS','SUCCESS_WITH_WARNINGS'} else 1
     if args.command=='stages':print(json.dumps(STAGES,indent=2));return 0

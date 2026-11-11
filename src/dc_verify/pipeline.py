@@ -103,7 +103,7 @@ class Runner:
                 except ValueError:raise PipelineBlocked('API.env의 OPENAI_API_KEY에 본인 API 키를 입력하세요.')
                 owned=codex.create_client(config,timeout=600.0);transport=owned
             else:transport=self.injected_client
-            self.client=TrackedClient(transport,self)
+            self.client=self.wrap_client(transport)
             os.environ['DC_VERIFY_DATA_DIR']=str(self.root)
             self.event(0,'SUCCESS')
             self.run()
@@ -116,6 +116,8 @@ class Runner:
             else:os.environ['DC_VERIFY_DATA_DIR']=previous
         print(json.dumps({k:self.status.get(k) for k in ['status','controller_decision','goal_status','report','reason','run_mode','model_requests','token_usage_reported']},ensure_ascii=False,indent=2),flush=True)
         return self.status
+    def wrap_client(self, transport):
+        return TrackedClient(transport, self)
     def run(self):
         from dc_verify.step.step1.code import OCR
         from dc_verify.step.step2.code import controller as planner
@@ -214,14 +216,18 @@ class Runner:
         from dc_verify.step.step9.code.prompt import CONTROLLER_POST_EVIDENCE_PROMPT,build_user_prompt
         inputs=local_inputs(self.plan,self.a,self.source,self.evidence,self.replan_input,self.original_pdf,self.ocr,self.history)
         inputs['state']['execution_policy']['external_branch']=self.status['stages'].get('7')
+        if hasattr(self,'counter'):inputs['state']['counterevidence_review']=self.counter
         self.event(9,'RUNNING');state=inputs['state'];decision=None
         first=len(self.status['model_responses'])
-        for attempt in range(2):
+        self.put(9,'controller_state_input.json',state)
+        for attempt in range(3):
             response,decision,validation=decide_after_cross_check(state,CONTROLLER_POST_EVIDENCE_PROMPT,
                 build_user_prompt(state),client=self.client)
             self.put(9,f'controller_response_{attempt+1}.json',response);self.put(9,f'validation_{attempt+1}.json',validation)
             if validation['status']=='PASSED':break
+            if hasattr(self,'validation_feedback'):self.validation_feedback=json.dumps(validation['errors'],ensure_ascii=False)
         if validation['status']!='PASSED':raise PipelineBlocked('Final Controller response did not pass its state/evidence guards.')
+        if hasattr(self,'validation_feedback'):self.validation_feedback=None
         self.put(9,'controller_state_input.json',state);self.put(9,'controller_decision.json',decision)
         self.event(9,'SUCCESS',output=str(self.folder(9)))
         responses=self.status['model_responses'][first:]

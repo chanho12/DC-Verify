@@ -21,7 +21,7 @@ from pydantic import BaseModel, ConfigDict, Field, ValidationError, create_model
 
 HERE = Path(__file__).resolve().parent
 STEP = HERE.parent
-from dc_verify.codex import DEFAULT_MODEL, request_structured_output, safe_error
+from dc_verify.codex import PLANNING_MODEL as DEFAULT_MODEL, request_structured_output, safe_error
 from dc_verify.step.step7.code.prompt import SEARCH_SYSTEM_PROMPT, build_user_prompt
 
 

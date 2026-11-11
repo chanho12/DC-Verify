@@ -11,11 +11,11 @@ from collections import Counter
 from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Literal, Optional
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, create_model
 
 HERE = Path(__file__).resolve().parent
 STEP = HERE.parent
-from dc_verify.codex import DEFAULT_MODEL, request_structured_output, safe_error
+from dc_verify.codex import PLANNING_MODEL as DEFAULT_MODEL, request_structured_output, safe_error
 from dc_verify.step.step6.code.controller_decision_prompt import CONTROLLER_DECISION_SYSTEM_PROMPT, build_user_prompt
 
 ActionType = Literal["SEARCH_OFFICIAL", "SEARCH_LOCAL", "REVERIFY_SOURCE", "ASK_USER", "DEFER", "FINALIZE"]
@@ -455,7 +455,11 @@ def normalize_post_evidence_metadata(value, state):
 
 def decide_after_cross_check(state, system_prompt, user_prompt, client=None):
     """Same Controller/API pathway as STEP6, extended schema for the post-evidence cycle."""
-    response = request_structured_output(system_prompt, user_prompt, PostEvidenceDecision, client=client, max_output_tokens=12000)
+    targets=state['review_context']['target_projects']
+    if not targets:raise ValueError('Final Controller requires an explicit target project')
+    action=create_model('ScopedNextAction',__base__=NextAction,target=(Literal[tuple(targets)],...))
+    schema=create_model('PostEvidenceDecision',__base__=PostEvidenceDecision,next_action=(action,...))
+    response = request_structured_output(system_prompt, user_prompt, schema, client=client, max_output_tokens=12000)
     if response.get('api_status') != 'completed' or response.get('parsed') is None:
         raise ValueError('Controller API did not return a completed structured decision')
     normalized, changes = normalize_post_evidence_metadata(response['parsed'], state)

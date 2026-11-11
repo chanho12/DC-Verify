@@ -14,7 +14,9 @@ from pathlib import Path
 
 from dc_verify.settings import env_path
 ROOT = Path.cwd()
-DEFAULT_MODEL = "gpt-5.4-mini"  # 사용자 지정 고정 모델. 환경변수로 바꾸지 않는다.
+DEFAULT_MODEL = "gpt-5.4-mini"  # OCR / Analysis / image verification
+PLANNING_MODEL = "gpt-6.1-sol"  # Controller / planning / counterevidence / final verifier
+PLANNING_SCHEMAS = {'ControllerPlan', 'ControllerDecision', 'PostEvidenceDecision', 'ScopedSearchPlan', 'Scope', 'CounterReview', 'FinalReview'}
 
 
 @dataclass(frozen=True)
@@ -25,8 +27,8 @@ class APIConfig:
     key_source: str = ""
 
     def __post_init__(self):
-        if self.model != DEFAULT_MODEL:
-            raise ValueError(f"이 프로젝트의 모델은 {DEFAULT_MODEL}로 고정되어 있습니다.")
+        if self.model not in {DEFAULT_MODEL, PLANNING_MODEL}:
+            raise ValueError("지원하지 않는 모델입니다.")
 
 
 def load_config(env_file=None, model=None) -> APIConfig:
@@ -48,16 +50,14 @@ def load_config(env_file=None, model=None) -> APIConfig:
                         if value and value.strip()), (None, None))
     if not key:
         raise ValueError("API 키가 없습니다. API.env에 OPENAI_API_KEY=... 또는 API=...를 설정하세요.")
-    if model is not None and model != DEFAULT_MODEL:
-        raise ValueError(f"모델은 {DEFAULT_MODEL}로 고정되어 있습니다.")
-    return APIConfig(api_key=key, model=DEFAULT_MODEL, env_file=path, key_source=source)
+    return APIConfig(api_key=key, model=model or DEFAULT_MODEL, env_file=path, key_source=source)
 
 
 def config_summary(config: APIConfig) -> dict:
     """로그나 화면에는 키 자체 대신 설정 상태만 반환."""
     return {"status": "CONFIG_LOADED", "env_file": str(config.env_file),
             "env_file_exists": config.env_file.is_file(), "api_key_configured": bool(config.api_key),
-            "key_source": config.key_source, "model": config.model, "api_called": False}
+            "key_source": config.key_source, "model": config.model, "planning_model": PLANNING_MODEL, "api_called": False}
 
 
 def create_client(config=None, timeout=45.0):
@@ -131,10 +131,11 @@ def request_structured_output(system_prompt, user_prompt, schema, config=None, c
         with create_client(config, timeout=180.0) as owned_client:
             return request_structured_output(system_prompt, user_prompt, schema, config,
                                              owned_client, max_output_tokens)
+    model = PLANNING_MODEL if schema.__name__ in PLANNING_SCHEMAS else DEFAULT_MODEL
     response = client.responses.parse(
-        model=DEFAULT_MODEL, instructions=system_prompt,
+        model=model, instructions=system_prompt,
         input=[{"role": "user", "content": user_prompt}], text_format=schema,
-        reasoning={"effort": "none"}, max_output_tokens=max_output_tokens, store=False,
+        reasoning={"effort": "low" if model == PLANNING_MODEL else "none"}, max_output_tokens=max_output_tokens, store=False,
     )
     return {
         "api_status": response.status, "model": response.model, "response_id": response.id,
@@ -222,7 +223,7 @@ def safe_error(error: Exception) -> dict:
                 404: "모델 또는 API 경로를 찾지 못했습니다.",
                 429: "요청 한도 또는 이용 잔액을 확인하세요."}
     if isinstance(error, ValueError):
-        message = "설정값·PDF·프롬프트를 확인하세요. 모델은 gpt-5.4-mini로 고정되어 있습니다."
+        message = "설정값·PDF·프롬프트와 단계별 검증 기록을 확인하세요."
     elif isinstance(error, ModuleNotFoundError):
         message = "의존성을 설치하세요: python -m pip install openai python-dotenv"
     else:

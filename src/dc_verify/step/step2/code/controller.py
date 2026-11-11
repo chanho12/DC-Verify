@@ -21,7 +21,7 @@ from pydantic import BaseModel, ConfigDict
 
 HERE = Path(__file__).resolve().parent
 STEP_DIR = HERE.parent
-from dc_verify.codex import DEFAULT_MODEL, request_structured_output, safe_error
+from dc_verify.codex import PLANNING_MODEL as DEFAULT_MODEL, request_structured_output, safe_error
 from dc_verify.step.step2.code.prompt import CONTROLLER_SYSTEM_PROMPT, CONTROLLER_USER_PROMPT
 
 INPUT_PATH = stage_data(2) / 'ocr.json'

@@ -52,9 +52,12 @@ def execute_external(runner,p6):
         except Exception as error:
             write_json(search/'raw_retrieval'/f'origin_{index}_failure.json',{'operation':'OPEN_DOCUMENT','status':'FAILED','error_type':type(error).__name__})
     registry['official_host_provenance']['observed_urls']=observed;write_json(search/'runtime_tools.json',registry)
-    search_api_adapter.execute_api(search,key=key)
+    if getattr(runner,'guard',None):search_api_adapter.execute_api(search,key=key,guard=runner.guard)
+    else:search_api_adapter.execute_api(search,key=key)
     state=read_json(search/'state.json')
     urls=[d['url'] for d in state['documents'] if urlsplit(d['url']).hostname in set(hosts)][:12]
+    if getattr(runner,'guard',None):
+        for url in urls:runner.guard.check('retrieve_local_evidence',url=url)
     if urls:search_fetcher.collect(search,urls)
     runner.history=read_json(search/'search_history_updated.json')
     search_run=read_json(search/'run.json')
@@ -74,6 +77,14 @@ def execute_external(runner,p6):
     jobs=read_json(gate/'analysis_input.json')['analysis_jobs']
     if not jobs:
         runner.event(8,'SKIPPED_NO_ADMITTED_DOCUMENTS',reason='확보 원문이 출처·날짜·범위 검사를 통과하지 못했습니다.',output=str(gate));return None
+    if getattr(runner,'store',None):
+        # Admission permits analysis; retrieved chunks remain unverified candidates.
+        for job in jobs:
+            doc=job['bundle']['documents'][0]
+            runner.store.index(doc['document_id'],doc['source_sha256'],doc['pages'],
+                {'title':doc['title'],'source_path':doc['source_file'],'source_sha256':doc['source_sha256'],
+                 'url':doc.get('source_url'),'published_at':doc.get('published_at'),
+                 'admission':job['analysis_admission'],'version_type':'SOURCE_SHA256'})
     external=runner.run_stage('8-analysis',lambda:external_analysis.execute(gate,runner.folder(8)/'output',client=runner.client))
     verified=runner.run_stage('8-verification',lambda:external_verification.execute(external,runner.folder(8)/'output',client=runner.client))
     pairs=runner.run_stage('8-cross',lambda:cross_source.execute(verified,runner.folder(8)/'output',client=runner.client))

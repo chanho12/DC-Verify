@@ -10,7 +10,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-from dc_verify.codex import DEFAULT_MODEL, safe_error
+from dc_verify.codex import PLANNING_MODEL as DEFAULT_MODEL, safe_error
 from dc_verify.step.step8.code.source_admission import digest, now, read_json, write_json
 from dc_verify.step.step8.code.cross_source_input import successful_runs, require
 from dc_verify.step.step9.code.state_restoration import restore
@@ -20,7 +20,7 @@ from dc_verify.step.step6.code.controller_replan import (decide_after_cross_chec
 
 
 def execute(source_run=None, runtime_file=stage_data(9) / 'runtime_tools.json', output_dir=stage_data(9) / 'output',
-            resume=None, dry_run=False, client=None):
+            resume=None, dry_run=False, client=None, counterevidence=None):
     output = Path(resume).resolve() if resume else Path(output_dir) / ('controller_cycle_' + datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ'))
     output.mkdir(parents=True, exist_ok=bool(resume))
     def event(name, **values):
@@ -54,6 +54,9 @@ def execute(source_run=None, runtime_file=stage_data(9) / 'runtime_tools.json', 
         print(json.dumps(result, ensure_ascii=False), flush=True)
         return result
     user = build_user_prompt(api_state)
+    if counterevidence is not None:
+        write_json(output / 'counterevidence_review.json', counterevidence)
+        user += '\nCOUNTEREVIDENCE_REVIEW (diagnostic; does not modify source/goal state):\n' + json.dumps(counterevidence,ensure_ascii=False)
     decision = None
     selected_response = None
     responses, validation, new_requests = [], None, 0
