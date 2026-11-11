@@ -1,0 +1,36 @@
+{
+  "analysis_handoff": {
+    "review_goal": "Check operational IT capacity",
+    "target_projects": [
+      "Example Facility"
+    ],
+    "as_of_date": "2026-01-01",
+    "document_ids": [
+      "synthetic_document"
+    ],
+    "priority_pages": [
+      1
+    ],
+    "required_metrics": [
+      "operational_it_capacity"
+    ],
+    "source_admission_policy": {
+      "analysis_admission": "CONDITIONAL",
+      "final_evidence_allowed": false
+    }
+  },
+  "documents": [
+    {
+      "document_id": "synthetic_document",
+      "published_at": null,
+      "pages": [
+        {
+          "source_page": 1,
+          "text": "SYNTHETIC_TEST_DATA. Example Facility customer-provided IT capacity is 12 MW (planned).",
+          "ocr_text_sha256": "e6b8c129a487e9c7cb6b5898929a6b83ca8ef010dd9434312055f516e3a2542b"
+        }
+      ]
+    }
+  ],
+  "data_classification": "SYNTHETIC_TEST_DATA"
+}

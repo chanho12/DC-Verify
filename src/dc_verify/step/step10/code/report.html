@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>DC-Verify · Evidence Review</title>
+<style>/*REPORT_CSS*/</style></head><body>
+<a class="skip" href="#main">본문으로 이동</a>
+<aside class="sidebar"><a href="#overview" class="brand"><span class="brand-mark">DC</span><span>VERIFY<small>EVIDENCE REVIEW</small></span></a>
+<div class="sidebar-label">검토 워크스페이스</div><nav aria-label="리포트 목차">
+<a href="#overview">01 <span>검토 요약</span></a><a href="#requirements">02 <span>요건별 결과</span></a>
+<a href="#metrics">03 <span>용량의 의미</span></a><a href="#evidence">04 <span>Evidence Table</span></a>
+<a href="#sources">05 <span>Source Trace</span></a><a href="#crosscheck">06 <span>문서 간 비교</span></a>
+<a href="#human">07 <span>Human Review</span></a><a href="#execution">08 <span>실행 기록</span></a></nav>
+<div class="sidebar-foot"><span class="dot"></span> 로컬 리포트<small>원문과 판단의 경계를 보존합니다.</small></div></aside>
+<div class="workspace"><header class="topbar"><span>DC-Verify <span class="muted">/</span> 검토 결과</span><div class="top-actions"><a href="report.json" download>JSON</a><a href="evidence.csv" download>Evidence CSV</a><button id="print" class="outline" type="button">인쇄 / PDF</button></div></header>
+<main id="main"><section id="overview"><div class="eyebrow">DOCUMENT-BASED DUE DILIGENCE</div><div class="hero-title"><h1 id="project"></h1><span id="decision-badge" class="badge amber"></span></div>
+<p id="goal" class="lede"></p><div class="meta"><span id="asof"></span><span id="generated"></span><span id="report-id"></span></div>
+<div class="hero-grid"><article class="decision-card"><span class="section-kicker">CONTROLLER DECISION</span><h2 id="decision-title"></h2><p id="decision-reason"></p><div class="judgment-label">Controller 판단 이유 · 추가 검색 정보가치의 정량평가 미수행</div><div class="decision-footer"><span id="workflow-status"></span><span id="goal-status"></span></div></article>
+<article class="boundary-card"><span class="section-kicker">WHAT THIS RESULT MEANS</span><h3>문서상 주장과 현재 실적을<br>구분해서 읽어주세요.</h3><p>원문·의미 검사를 통과해도 잠정 자료일 수 있습니다. 기업의 완료 발표는 기준일 현재의 독립 입증과 다릅니다.</p><div id="boundary-summary"></div></article></div>
+<div class="stats" id="stats"></div></section>
+<section id="requirements"><div class="section-head"><div><span class="section-kicker">REVIEW REQUIREMENTS</span><h2>요건별 검토 결과</h2></div><span class="section-note">확보한 주장 · 부족한 증빙</span></div><div id="requirements-grid" class="requirements-grid"></div></section>
+<section id="metrics"><div class="section-head"><div><span class="section-kicker">METRIC INTERPRETATION</span><h2>같은 단위, 다른 의미</h2></div></div><p class="section-description">제공·설계·계약·운영 가능 용량과 실제 사용량은 서로 대체하지 않습니다. 아래 값은 직접 기재된 문서상 주장입니다.</p><div id="metric-grid" class="metric-grid"></div></section>
+<section id="evidence"><div class="section-head"><div><span class="section-kicker">EVIDENCE TABLE</span><h2>주장별 근거와 검증 상태</h2></div><span id="evidence-count" class="section-note" aria-live="polite"></span></div>
+<div class="filters"><label class="search-label"><span>검색</span><input id="search" type="search" placeholder="지표, 문서, 전체 Claim Key 검색"></label><label><span>검토 상태</span><select id="status-filter"><option value="all">전체 상태</option><option value="usable">원문·의미 통과</option><option value="review">검토 필요</option><option value="quarantine">격리</option><option value="provisional">잠정 자료</option></select></label><label><span>지표</span><select id="metric-filter"><option value="all">전체 지표</option></select></label><button id="clear" class="outline" type="button">초기화</button></div>
+<div class="table-wrap" tabindex="0" aria-label="Evidence Table 가로 스크롤"><table><thead><tr><th>지표 / 문서상 값</th><th>측정 기준 / 정보 시점</th><th>검증 / 채택 상태</th><th>출처 / 상세</th></tr></thead><tbody id="evidence-body"></tbody></table></div><p id="empty" class="empty" hidden>조건에 맞는 주장이 없습니다.</p><div class="pagination"><button class="outline" type="button" id="prev">이전</button><span id="page-info" aria-live="polite"></span><button class="outline" type="button" id="next">다음</button></div></section>
+<section id="sources"><div class="section-head"><div><span class="section-kicker">SOURCE TRACE</span><h2>원문을 따라 확인하기</h2></div><span class="section-note">해시가 확인된 로컬 스냅샷</span></div><div id="source-grid" class="source-grid"></div></section>
+<section id="crosscheck"><div class="section-head"><div><span class="section-kicker">CROSS-SOURCE RELATIONSHIPS</span><h2>문서 간 비교와 보류 사유</h2></div><span id="pair-count" class="section-note"></span></div><div id="relationship-summary" class="chips"></div><div id="pair-grid" class="pair-grid"></div><details class="diagnostic-box"><summary id="diagnostic-summary"></summary><div id="diagnostics"></div></details></section>
+<section id="human"><div class="section-head"><div><span class="section-kicker">HUMAN REVIEW</span><h2>추가 실사와 원문 검토</h2></div><button id="export-review" type="button" class="primary">검토 메모 JSON 내보내기</button></div>
+<p class="section-description">메모는 검증 판정이 아닙니다. 원래 Claim·격리·잠정 상태는 유지되며, 제출 자료는 별도 재검증이 필요합니다.</p><div class="annotation-toolbar"><span id="save-status" role="status">메모는 이 브라우저에 저장됩니다. JSON으로 내려받아 보관하세요.</span><button id="save-review" class="outline" type="button">메모 저장</button></div><div id="review-grid" class="review-grid"></div></section>
+<section id="execution"><div class="section-head"><div><span class="section-kicker">EXECUTION & PROVENANCE</span><h2>실행 기록과 종료 상태</h2></div></div><div id="execution-grid" class="execution-grid"></div><div class="note-box">이 화면은 저장된 검증 결과를 정리한 리포트입니다. 새 LLM 호출·검색·수치 추정·후속 작업 실행은 하지 않습니다.</div></section>
+<footer>DC-VERIFY <span>원문 → 주장 → 검증 → 판단 → 사람의 검토</span><a href="#overview">맨 위로 ↑</a></footer></main></div>
+<noscript>이 리포트의 검색과 검토 메모 기능에는 JavaScript가 필요합니다. report.json과 evidence.csv에서 전체 데이터를 확인할 수 있습니다.</noscript>
+<script id="report-data" type="application/json">REPORT_DATA_PLACEHOLDER</script><script>/*REPORT_JS*/</script></body></html>

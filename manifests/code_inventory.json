@@ -1,0 +1,2983 @@
+{
+  "schema_version": "DC_VERIFY_CODE_INVENTORY_1",
+  "files": [
+    {
+      "original_path": "01_experiments/code/codex.py",
+      "release_path": "src/dc_verify/codex.py",
+      "original_sha256": "6b99acb4f596d80869ed43bd04e9ef933f12e8499f0d2ecdc483e456877ed8be",
+      "release_sha256": "a062e60aaf4b9b49320d0b57f0a9f1b461b96b571726f1113eee18ac4f8c0642",
+      "modifications": [
+        "Package-qualified imports",
+        "Configured API.env location; key loading/model contract preserved"
+      ],
+      "stage": 0,
+      "functions": [
+        "APIConfig",
+        "load_config",
+        "config_summary",
+        "create_client",
+        "read_pdf_file",
+        "request_pdf_ocr",
+        "request_structured_output",
+        "check_connection",
+        "request_image_verification",
+        "ask",
+        "safe_error",
+        "main"
+      ],
+      "imports": [
+        "__future__",
+        "dataclasses",
+        "dc_verify.settings",
+        "dotenv",
+        "openai",
+        "pathlib"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step1/code/OCR.py",
+      "release_path": "src/dc_verify/step/step1/code/OCR.py",
+      "original_sha256": "70020f5723fa30cb62c41302c2bb2a33800c8e6e1cbf3aeab2a160ad174a4158",
+      "release_sha256": "f53bf7cc4d91082fb42fdcc8a5d060846bed75ec0b081d788b3728eea3308c88",
+      "modifications": [
+        "Package-qualified imports",
+        "Removed sys.path insertion",
+        "DC_VERIFY_DATA_DIR runtime paths"
+      ],
+      "stage": 1,
+      "functions": [
+        "split_pages",
+        "run_ocr",
+        "main"
+      ],
+      "imports": [
+        "__future__",
+        "datetime",
+        "dc_verify.codex",
+        "dc_verify.settings",
+        "dc_verify.step.step1.code.prompt",
+        "pathlib"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step1/code/prompt.py",
+      "release_path": "src/dc_verify/step/step1/code/prompt.py",
+      "original_sha256": "e4274b71bd015142f53a7654feaf0dcbe5e380521399dfd500df80a25d77df7a",
+      "release_sha256": "c93133177d6333218875f93579f9d5bcb0090d7bba018536e58968b8ba01659a",
+      "modifications": [
+        "Package-qualified imports"
+      ],
+      "stage": 1,
+      "functions": [],
+      "imports": [
+        "dc_verify.settings"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step10/code/prompt.py",
+      "release_path": "src/dc_verify/step/step10/code/prompt.py",
+      "original_sha256": "959dd84920b8526b9643f230db4777228efacbffb6cb06e37ad0d1999894da48",
+      "release_sha256": "38afd8c8932fa769c71447bfa41253812286669736da85f8341345b5a7e24f9d",
+      "modifications": [
+        "Package-qualified imports"
+      ],
+      "stage": 10,
+      "functions": [],
+      "imports": [
+        "dc_verify.settings"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step10/code/report.css",
+      "release_path": "src/dc_verify/step/step10/code/report.css",
+      "original_sha256": "189b684a23bcdd88e8427fe8b30e439459a899ac37990516d306ed0fb7d174d5",
+      "release_sha256": "189b684a23bcdd88e8427fe8b30e439459a899ac37990516d306ed0fb7d174d5",
+      "modifications": [],
+      "stage": 10,
+      "functions": [],
+      "imports": []
+    },
+    {
+      "original_path": "01_experiments/code/step/step10/code/report.html",
+      "release_path": "src/dc_verify/step/step10/code/report.html",
+      "original_sha256": "eeb7cda92012de2c55280e67ad0e345b7f88b7975a964e4387a0d2a0d293e5ab",
+      "release_sha256": "eeb7cda92012de2c55280e67ad0e345b7f88b7975a964e4387a0d2a0d293e5ab",
+      "modifications": [],
+      "stage": 10,
+      "functions": [],
+      "imports": []
+    },
+    {
+      "original_path": "01_experiments/code/step/step10/code/report.js",
+      "release_path": "src/dc_verify/step/step10/code/report.js",
+      "original_sha256": "257f4999a0ed20a4ee6a6ead4221963ad00a26f7f6b758255ef04f51a2b1c881",
+      "release_sha256": "257f4999a0ed20a4ee6a6ead4221963ad00a26f7f6b758255ef04f51a2b1c881",
+      "modifications": [],
+      "stage": 10,
+      "functions": [],
+      "imports": []
+    },
+    {
+      "original_path": "01_experiments/code/step/step10/code/report_builder.py",
+      "release_path": "src/dc_verify/step/step10/code/report_builder.py",
+      "original_sha256": "648a3655405cd049f74635f88f8d9736b735d27f67737e88c4e72837079712c9",
+      "release_sha256": "39b371ca63f19d4b829f1e0b688c53d25a497715a6b69dcbb2da969103eaee9f",
+      "modifications": [
+        "Package-qualified imports",
+        "Removed sys.path insertion",
+        "DC_VERIFY_DATA_DIR runtime paths",
+        "Packaged report policy resource"
+      ],
+      "stage": 10,
+      "functions": [
+        "safe_url",
+        "safe_csv",
+        "normalize_pair_time",
+        "workflow_view",
+        "load_inputs",
+        "source_snapshots",
+        "evidence_rows",
+        "build_report",
+        "render_html",
+        "validate_report",
+        "build",
+        "main"
+      ],
+      "imports": [
+        "__future__",
+        "collections",
+        "datetime",
+        "dc_verify.settings",
+        "dc_verify.step.step10.code.prompt",
+        "dc_verify.step.step6.code.controller_replan",
+        "dc_verify.step.step7.code.document_preparer",
+        "dc_verify.step.step8.code.cross_source_input",
+        "dc_verify.step.step8.code.source_admission",
+        "dc_verify.step.step9.code.state_restoration",
+        "pathlib",
+        "urllib.parse"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step10/code/test_report_builder.py",
+      "release_path": "src/dc_verify/step/step10/code/test_report_builder.py",
+      "original_sha256": "f7e9f9c860f9908efde78a248bdb76555dc3708f3fe5212f54680d2264acb4e3",
+      "release_sha256": "d33e955b2cf85cc5eb3e04a2be7638307ab17df755ab7816ffd634202a7a79a7",
+      "modifications": [
+        "Package-qualified imports",
+        "Removed sys.path insertion",
+        "DC_VERIFY_DATA_DIR runtime paths",
+        "Packaged report policy resource"
+      ],
+      "stage": 10,
+      "functions": [
+        "PresentationBoundaries",
+        "PreservedLineageRegression"
+      ],
+      "imports": [
+        "bs4",
+        "dc_verify.settings",
+        "dc_verify.step.step10.code",
+        "pathlib",
+        "unittest.mock"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step2/code/controller.py",
+      "release_path": "src/dc_verify/step/step2/code/controller.py",
+      "original_sha256": "e01e6b880fd4b7882099f7167d4d14a289d3071a37c8bf17ee42988293a4b882",
+      "release_sha256": "a1fea4f0d07e06391c9935467651e20821ab0bde9ef28ef4bb4b9a4b804901b7",
+      "modifications": [
+        "Package-qualified imports",
+        "Removed sys.path insertion",
+        "DC_VERIFY_DATA_DIR runtime paths"
+      ],
+      "stage": 2,
+      "functions": [
+        "StrictModel",
+        "DocumentScope",
+        "Task",
+        "NextAction",
+        "AnalysisHandoff",
+        "ControllerPlan",
+        "tokenize",
+        "search_terms",
+        "read_json",
+        "write_json",
+        "load_input",
+        "build_document_index",
+        "prepare_input",
+        "validate_plan",
+        "build_analysis_input",
+        "run_controller",
+        "main"
+      ],
+      "imports": [
+        "__future__",
+        "collections",
+        "datetime",
+        "dc_verify.codex",
+        "dc_verify.settings",
+        "dc_verify.step.step2.code.prompt",
+        "pathlib",
+        "pydantic",
+        "typing",
+        "zoneinfo"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step2/code/prompt.py",
+      "release_path": "src/dc_verify/step/step2/code/prompt.py",
+      "original_sha256": "2106edeebf1797fe6086dfcd495a2b4d8970be3e28b35c65c497c91cd1dfdc19",
+      "release_sha256": "26396f06774f2cbb48926e1a30ed5906dfdbaa4c606e5abb4fffdec92ec25790",
+      "modifications": [
+        "Package-qualified imports"
+      ],
+      "stage": 2,
+      "functions": [],
+      "imports": [
+        "dc_verify.settings"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step3/code/analysis.py",
+      "release_path": "src/dc_verify/step/step3/code/analysis.py",
+      "original_sha256": "861bde1e158c8812d864d567c161a99e058f6883dc3ed41d57c23342c57b6a30",
+      "release_sha256": "8eb4bc4875bca98916a415ea12f90ce667b670fd345158c55c343f9fe82fb247",
+      "modifications": [
+        "Package-qualified imports",
+        "Removed sys.path insertion",
+        "DC_VERIFY_DATA_DIR runtime paths"
+      ],
+      "stage": 3,
+      "functions": [
+        "StrictModel",
+        "PageRef",
+        "Claim",
+        "Coverage",
+        "MissingInformation",
+        "AnalysisResult",
+        "read_json",
+        "write_json",
+        "prepare_input",
+        "explicit_numbers",
+        "scoped_response_schema",
+        "bind_source_whitespace",
+        "external_semantic_issues",
+        "check_result",
+        "conservative_extraction",
+        "run_analysis",
+        "main"
+      ],
+      "imports": [
+        "__future__",
+        "datetime",
+        "dc_verify.codex",
+        "dc_verify.settings",
+        "dc_verify.step.step3.code.analysis_prompt",
+        "pathlib",
+        "pydantic",
+        "typing"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step3/code/analysis_prompt.py",
+      "release_path": "src/dc_verify/step/step3/code/analysis_prompt.py",
+      "original_sha256": "a4f98b60cdf03aacfe09164ba439b74ff86d469798ba768f119d0c5b04e578e5",
+      "release_sha256": "561b3163f6c0feb9997ed80fbb58b67470fb948a4ae98b896a6167e5c4c8b0de",
+      "modifications": [
+        "Package-qualified imports"
+      ],
+      "stage": 3,
+      "functions": [
+        "build_analysis_user_prompt"
+      ],
+      "imports": [
+        "dc_verify.settings"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step3/code/test_analysis.py",
+      "release_path": "src/dc_verify/step/step3/code/test_analysis.py",
+      "original_sha256": "7f20e1fe668754571f6d71b9d87a65b8fa6218bfde05198dd6280b324ff20bf5",
+      "release_sha256": "abe0f60fcb48902359f35c699a391bb960071cadb1a9ded329011eb20218f317",
+      "modifications": [
+        "Package-qualified imports",
+        "Explicit skip without private fixture"
+      ],
+      "stage": 3,
+      "functions": [
+        "AnalysisTests"
+      ],
+      "imports": [
+        "dc_verify.settings",
+        "dc_verify.step.step3.code",
+        "pathlib",
+        "unittest.mock"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step4/code/source_verifier.py",
+      "release_path": "src/dc_verify/step/step4/code/source_verifier.py",
+      "original_sha256": "5ff8c9b89db52e6dfeb7a483a4a399fce534e9b08cb04a14852e6c3bebfc1a2a",
+      "release_sha256": "e362db5e2a2f38cece7212707ac3b7c464330665717d8f167a4b61bbddea0859",
+      "modifications": [
+        "Package-qualified imports",
+        "Removed sys.path insertion",
+        "DC_VERIFY_DATA_DIR runtime paths",
+        "PDF path is required CLI input"
+      ],
+      "stage": 4,
+      "functions": [
+        "StrictModel",
+        "FieldChecks",
+        "ClaimResult",
+        "Observation",
+        "VerificationResult",
+        "read_json",
+        "write_json",
+        "sha256",
+        "load_inputs",
+        "check_ocr",
+        "render_original_pages",
+        "validate_model_result",
+        "failed_result",
+        "apply_review_guards",
+        "assemble_results",
+        "run_verifier",
+        "main"
+      ],
+      "imports": [
+        "__future__",
+        "collections",
+        "datetime",
+        "dc_verify.codex",
+        "dc_verify.settings",
+        "dc_verify.step.step4.code.source_verifier_prompt",
+        "pathlib",
+        "pydantic",
+        "typing"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step4/code/source_verifier_prompt.py",
+      "release_path": "src/dc_verify/step/step4/code/source_verifier_prompt.py",
+      "original_sha256": "246c49252690f377819366eb5a1978c9a4f0ccc14936d53b3b4e1bab3df36646",
+      "release_sha256": "ad875e75aba176452bd33fe540840b98ea91d24b468b783c607101a2592554d7",
+      "modifications": [
+        "Package-qualified imports"
+      ],
+      "stage": 4,
+      "functions": [
+        "build_user_prompt"
+      ],
+      "imports": [
+        "dc_verify.settings"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step4/code/test_source_verifier.py",
+      "release_path": "src/dc_verify/step/step4/code/test_source_verifier.py",
+      "original_sha256": "29d6ce8a88fe685dab4d90b01081cd244a133441494220fc0d82626728647ed1",
+      "release_sha256": "d90feb17c6066b199b62f9c01d9c80450590b637d494ee17958840b7b1ce4392",
+      "modifications": [
+        "Package-qualified imports",
+        "DC_VERIFY_DATA_DIR runtime paths",
+        "Explicit skip without private fixture",
+        "PDF path is required CLI input"
+      ],
+      "stage": 4,
+      "functions": [
+        "SourceVerifierTests"
+      ],
+      "imports": [
+        "dc_verify.codex",
+        "dc_verify.settings",
+        "dc_verify.step.step4.code",
+        "pathlib",
+        "types",
+        "unittest.mock"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step5/code/assess_evidence.py",
+      "release_path": "src/dc_verify/step/step5/code/assess_evidence.py",
+      "original_sha256": "f0a8b134397d406a2483dee3c64361c217ddb7a81caf6e9df5e938a3d2581681",
+      "release_sha256": "c2f1727a744a7667ab47643e6fe8d1d3d768fe48962795e712f307aef5d546ae",
+      "modifications": [
+        "Package-qualified imports",
+        "Removed sys.path insertion",
+        "DC_VERIFY_DATA_DIR runtime paths"
+      ],
+      "stage": 5,
+      "functions": [
+        "StrictModel",
+        "ClaimAssessment",
+        "UnresolvedRequirement",
+        "ControllerObservation",
+        "EvidenceAssessment",
+        "read_json",
+        "write_json",
+        "load_inputs",
+        "validate_assessment",
+        "prepare_api_inputs",
+        "merge_not_assessed",
+        "assess_evidence",
+        "main"
+      ],
+      "imports": [
+        "__future__",
+        "collections",
+        "datetime",
+        "dc_verify.codex",
+        "dc_verify.settings",
+        "dc_verify.step.step5.code.evidence_prompt",
+        "pathlib",
+        "pydantic",
+        "typing"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step5/code/evidence_prompt.py",
+      "release_path": "src/dc_verify/step/step5/code/evidence_prompt.py",
+      "original_sha256": "604b3b68e1677e928791b50a3a979b6c492b4ca002368165324cb137aed98903",
+      "release_sha256": "b542c59a0680a4db92d54d789e8b6d16f1647a2e4b3a3a91d816a3f9ed5c03cf",
+      "modifications": [
+        "Package-qualified imports"
+      ],
+      "stage": 5,
+      "functions": [
+        "build_user_prompt"
+      ],
+      "imports": [
+        "dc_verify.settings"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step5/code/test_assess_evidence.py",
+      "release_path": "src/dc_verify/step/step5/code/test_assess_evidence.py",
+      "original_sha256": "3f34e1eeebf35bab6bb5fbdbd525a45143546bb1c849cd13347bcae3263696c0",
+      "release_sha256": "4764296d5a288bbdeb0c380b13716bd9c52a49b4eeebb662ebea3eefc64c3b52",
+      "modifications": [
+        "Package-qualified imports",
+        "DC_VERIFY_DATA_DIR runtime paths",
+        "Explicit skip without private fixture"
+      ],
+      "stage": 5,
+      "functions": [
+        "EvidenceTests"
+      ],
+      "imports": [
+        "dc_verify.settings",
+        "dc_verify.step.step5.code",
+        "pathlib",
+        "unittest.mock"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step6/code/controller_decision_prompt.py",
+      "release_path": "src/dc_verify/step/step6/code/controller_decision_prompt.py",
+      "original_sha256": "6507b24f336949e85d4385a245a2a13f7edafa90160b9b31370862228bba030f",
+      "release_sha256": "d800c65c415fbff49af7cb2b3f5af5bc1051f48658b0306618e80e13918fe4f9",
+      "modifications": [
+        "Package-qualified imports"
+      ],
+      "stage": 6,
+      "functions": [
+        "build_user_prompt"
+      ],
+      "imports": [
+        "dc_verify.settings"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step6/code/controller_replan.py",
+      "release_path": "src/dc_verify/step/step6/code/controller_replan.py",
+      "original_sha256": "1a5ca179c90e9dea1e3b1adf7da3e2954145c5ea05bd18cb6d7479ee792c66b8",
+      "release_sha256": "a2053ee2c96807e94f802178373059ea91f97aeb3c4e996b548e98d3d02997db",
+      "modifications": [
+        "Package-qualified imports",
+        "Removed sys.path insertion",
+        "DC_VERIFY_DATA_DIR runtime paths"
+      ],
+      "stage": 6,
+      "functions": [
+        "StrictModel",
+        "PrioritizedIssue",
+        "SearchConstraints",
+        "LocalScope",
+        "NextAction",
+        "PlannedTask",
+        "ControllerDecision",
+        "read_json",
+        "write_json",
+        "signature",
+        "prepare_input",
+        "validate_decision",
+        "build_action_input",
+        "run_replan",
+        "IssueObservation",
+        "PostEvidenceDecision",
+        "validate_post_evidence_decision",
+        "normalize_post_evidence_metadata",
+        "decide_after_cross_check",
+        "main"
+      ],
+      "imports": [
+        "__future__",
+        "collections",
+        "datetime",
+        "dc_verify.codex",
+        "dc_verify.settings",
+        "dc_verify.step.step6.code.controller_decision_prompt",
+        "pathlib",
+        "pydantic",
+        "typing"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step6/code/test_controller_replan.py",
+      "release_path": "src/dc_verify/step/step6/code/test_controller_replan.py",
+      "original_sha256": "606e55329eea36a40c51b532b7ae1681e2137615c9de54ceee2b673fb7ad784a",
+      "release_sha256": "618de6519406a1e7da6b051dcb06a856faadfddf804b3092eb9e9145d9112b6b",
+      "modifications": [
+        "Package-qualified imports",
+        "DC_VERIFY_DATA_DIR runtime paths",
+        "Explicit skip without private fixture"
+      ],
+      "stage": 6,
+      "functions": [
+        "valid_decision",
+        "ReplanTests"
+      ],
+      "imports": [
+        "dc_verify.settings",
+        "dc_verify.step.step6.code",
+        "pathlib",
+        "unittest.mock"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step7/code/document_preparer.py",
+      "release_path": "src/dc_verify/step/step7/code/document_preparer.py",
+      "original_sha256": "37006b19c93da0e9838a9b8470e8955dcf43b72700b8a835e6a29390f1e2c2f1",
+      "release_sha256": "54de62f1788c7c2b081e7cfb36c516dc8385081b759fae26e220c3329592cbc6",
+      "modifications": [
+        "Package-qualified imports",
+        "Removed sys.path insertion",
+        "DC_VERIFY_DATA_DIR runtime paths"
+      ],
+      "stage": 7,
+      "functions": [
+        "StrictModel",
+        "PageChoice",
+        "Screening",
+        "OCRPage",
+        "OCRResult",
+        "sha",
+        "text_quality",
+        "document_period",
+        "period_cutoff",
+        "parse_html",
+        "matches_target",
+        "relevant_segments",
+        "Preparer",
+        "main"
+      ],
+      "imports": [
+        "__future__",
+        "bs4",
+        "collections",
+        "datetime",
+        "dc_verify.codex",
+        "dc_verify.settings",
+        "dc_verify.step.step7.code.prompt",
+        "dc_verify.step.step7.code.search_executor",
+        "dc_verify.step.step7.code.search_fetcher",
+        "pathlib",
+        "pydantic",
+        "typing",
+        "urllib.parse"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step7/code/prompt.py",
+      "release_path": "src/dc_verify/step/step7/code/prompt.py",
+      "original_sha256": "8a749e0c27aab2995fcc0cfe73bf4a64cf4829307caf78e62326d81d9b20870e",
+      "release_sha256": "1eb5628df1c5387c21e351f8ad2d1d872f15ed366f3ad9471b52bc2d5cbd7869",
+      "modifications": [
+        "Package-qualified imports"
+      ],
+      "stage": 7,
+      "functions": [
+        "build_user_prompt"
+      ],
+      "imports": [
+        "dc_verify.settings"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step7/code/search_api_adapter.py",
+      "release_path": "src/dc_verify/step/step7/code/search_api_adapter.py",
+      "original_sha256": "cf320cb1b6ce029441755a8b0faac7aa2f528a5c7bf233e2230edf44859bfb95",
+      "release_sha256": "ef5fe2108f8915a72804c450ce569cbe3c5073dd12e628cc302f8aa4315f9823",
+      "modifications": [
+        "Package-qualified imports"
+      ],
+      "stage": 7,
+      "functions": [
+        "load_tavily_key",
+        "tavily_search",
+        "execute_api",
+        "main"
+      ],
+      "imports": [
+        "__future__",
+        "dc_verify.settings",
+        "dc_verify.step.step7.code",
+        "dotenv",
+        "pathlib",
+        "urllib.error",
+        "urllib.request"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step7/code/search_executor.py",
+      "release_path": "src/dc_verify/step/step7/code/search_executor.py",
+      "original_sha256": "dd597fd008532d6fc3104702fdec51faab9bc9d3facbda6333c48f8444d88b2f",
+      "release_sha256": "78a7275e53543fabd44f13ad36fbbe056fcb6c1d50966fe29dc37af993ad4a66",
+      "modifications": [
+        "Package-qualified imports",
+        "DC_VERIFY_DATA_DIR runtime paths"
+      ],
+      "stage": 7,
+      "functions": [
+        "now",
+        "read_json",
+        "write_json",
+        "locked",
+        "canonical_url",
+        "query_key",
+        "safe_date",
+        "parse_session_results",
+        "select_tool",
+        "init_run",
+        "remaining_attempts",
+        "make_session_request",
+        "classify_document",
+        "merge_candidate",
+        "import_receipts",
+        "add_link_candidates",
+        "finalize",
+        "_finalize",
+        "main"
+      ],
+      "imports": [
+        "__future__",
+        "contextlib",
+        "datetime",
+        "dc_verify.settings",
+        "pathlib",
+        "urllib.parse"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step7/code/search_fetcher.py",
+      "release_path": "src/dc_verify/step/step7/code/search_fetcher.py",
+      "original_sha256": "5051b360acd818228966f8cf4f6713f1d1339b36c17ed88096d96c09373684b5",
+      "release_sha256": "1d07661a80000b8568016c3cdd33a6f7a9e5d8a3b6305cc341d7657a1d8447b8",
+      "modifications": [
+        "Package-qualified imports"
+      ],
+      "stage": 7,
+      "functions": [
+        "NoRedirect",
+        "check_public_url",
+        "fetch_bytes",
+        "PublicationParser",
+        "publication_date",
+        "LinkParser",
+        "discover_download_links",
+        "collect",
+        "main"
+      ],
+      "imports": [
+        "__future__",
+        "dc_verify.settings",
+        "dc_verify.step.step7.code",
+        "html.parser",
+        "pathlib",
+        "urllib.error",
+        "urllib.parse",
+        "urllib.request",
+        "urllib.robotparser"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step7/code/search_planner.py",
+      "release_path": "src/dc_verify/step/step7/code/search_planner.py",
+      "original_sha256": "41a45c0e4c87cc64572769a337443cd531edab36c47e5ccb1808d089065a1fa9",
+      "release_sha256": "4616e2e4c9eab383f818cbc6701395de63d3597e490a488cd0a26269c29b1687",
+      "modifications": [
+        "Package-qualified imports",
+        "Removed sys.path insertion",
+        "DC_VERIFY_DATA_DIR runtime paths"
+      ],
+      "stage": 7,
+      "functions": [
+        "StrictModel",
+        "SearchTask",
+        "DeferredIssue",
+        "SearchConstraints",
+        "SearchPlan",
+        "read_json",
+        "write_json",
+        "normalized_query",
+        "task_signature",
+        "response_schema",
+        "prepare_api_input",
+        "prepare_input",
+        "validate_plan",
+        "plan_search",
+        "build_executor_input",
+        "run_planner",
+        "main"
+      ],
+      "imports": [
+        "__future__",
+        "collections",
+        "datetime",
+        "dc_verify.codex",
+        "dc_verify.settings",
+        "dc_verify.step.step7.code.prompt",
+        "pathlib",
+        "pydantic",
+        "typing"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step7/code/test_document_preparer.py",
+      "release_path": "src/dc_verify/step/step7/code/test_document_preparer.py",
+      "original_sha256": "53ec94e5e56f2de2c4bba85d2b0cae5cad3662f537ef5300030ee45ede871bb9",
+      "release_sha256": "a1aef23c899a64c16298fa4ec168bac90efab48c4162c48db076249e605dc284",
+      "modifications": [
+        "Package-qualified imports"
+      ],
+      "stage": 7,
+      "functions": [
+        "PreparationTests"
+      ],
+      "imports": [
+        "dc_verify.settings",
+        "dc_verify.step.step7.code",
+        "pathlib",
+        "unittest.mock"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step7/code/test_search_executor.py",
+      "release_path": "src/dc_verify/step/step7/code/test_search_executor.py",
+      "original_sha256": "21df4684bb831e0d67c602f94525facee9d7c22abafef2676c21aac3c15bcf1d",
+      "release_sha256": "a402cc0c88bec716af4fbb15e41b778e1927b00fc64e77d1f7f5f3298385701a",
+      "modifications": [
+        "Package-qualified imports"
+      ],
+      "stage": 7,
+      "functions": [
+        "ExecutorTests"
+      ],
+      "imports": [
+        "dc_verify.settings",
+        "dc_verify.step.step7.code",
+        "pathlib",
+        "unittest.mock"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step7/code/test_search_planner.py",
+      "release_path": "src/dc_verify/step/step7/code/test_search_planner.py",
+      "original_sha256": "6d5a690936a9132c7cbb089e1c5ddb6ed557e184639fcd2fa7683f6018736ed8",
+      "release_sha256": "293301c059ad27165ef1b6e2ffa7b90bdc0e4f7597fdfb11a188fd52b7d89bea",
+      "modifications": [
+        "Package-qualified imports",
+        "DC_VERIFY_DATA_DIR runtime paths",
+        "Explicit skip without private fixture"
+      ],
+      "stage": 7,
+      "functions": [
+        "valid_plan",
+        "SearchPlannerTests"
+      ],
+      "imports": [
+        "dc_verify.settings",
+        "dc_verify.step.step7.code",
+        "pathlib",
+        "pydantic",
+        "unittest.mock"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step8/code/cross_source.py",
+      "release_path": "src/dc_verify/step/step8/code/cross_source.py",
+      "original_sha256": "79e48fe2ca7d5976e5874e49e2044df454085f08b90e1fd02641de691f0b99fa",
+      "release_sha256": "a3aa0b1a8b65d36aa466798d73142a53cf109bb03df40c58bf6063df88392e52",
+      "modifications": [
+        "Package-qualified imports",
+        "Removed sys.path insertion",
+        "DC_VERIFY_DATA_DIR runtime paths"
+      ],
+      "stage": 8,
+      "functions": [
+        "StrictModel",
+        "Dimensions",
+        "response_schema",
+        "pair_payload",
+        "references",
+        "quantities",
+        "guard_pair",
+        "repair_pair",
+        "local_diagnostic",
+        "execute",
+        "verify_execution",
+        "main"
+      ],
+      "imports": [
+        "__future__",
+        "collections",
+        "datetime",
+        "dc_verify.codex",
+        "dc_verify.settings",
+        "dc_verify.step.step8.code.cross_source_input",
+        "dc_verify.step.step8.code.pair_matcher",
+        "dc_verify.step.step8.code.prompt",
+        "dc_verify.step.step8.code.source_admission",
+        "pathlib",
+        "pydantic",
+        "typing"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step8/code/cross_source_input.py",
+      "release_path": "src/dc_verify/step/step8/code/cross_source_input.py",
+      "original_sha256": "bfb002e1a81239497de78c4b6377421d498a18b961924d45bc9f51ae466b18cb",
+      "release_sha256": "d372c6c17cd1ce83f823c002721cc49662fe6757d7ca296508988c68c34e455e",
+      "modifications": [
+        "Package-qualified imports",
+        "Removed sys.path insertion",
+        "DC_VERIFY_DATA_DIR runtime paths",
+        "Canonical successful-run paths for symlink-mounted runtime data"
+      ],
+      "stage": 8,
+      "functions": [
+        "InputBlocked",
+        "require",
+        "indexed",
+        "claim_key",
+        "successful_runs",
+        "newest_source",
+        "check_snapshot",
+        "original_chain",
+        "find_original_pdf",
+        "eligibility",
+        "wrap_claim",
+        "load_input"
+      ],
+      "imports": [
+        "__future__",
+        "collections",
+        "datetime",
+        "dc_verify.settings",
+        "dc_verify.step.step3.code.analysis",
+        "dc_verify.step.step4.code.source_verifier",
+        "dc_verify.step.step5.code.assess_evidence",
+        "dc_verify.step.step8.code.external_verification",
+        "dc_verify.step.step8.code.source_admission",
+        "pathlib"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step8/code/external_analysis.py",
+      "release_path": "src/dc_verify/step/step8/code/external_analysis.py",
+      "original_sha256": "702b162169219cee1eaeef32b73985a1864310fc0980235b2f2982511b9c70ba",
+      "release_sha256": "27ba71020faf6efedb3cfc8c004c20fdd4ad351917c6efc5a858caf85233d65b",
+      "modifications": [
+        "Package-qualified imports",
+        "Removed sys.path insertion",
+        "DC_VERIFY_DATA_DIR runtime paths"
+      ],
+      "stage": 8,
+      "functions": [
+        "latest_run",
+        "load_admitted_jobs",
+        "execute",
+        "main"
+      ],
+      "imports": [
+        "__future__",
+        "datetime",
+        "dc_verify.codex",
+        "dc_verify.settings",
+        "dc_verify.step.step3.code",
+        "dc_verify.step.step8.code.prompt",
+        "dc_verify.step.step8.code.source_admission",
+        "pathlib"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step8/code/external_verification.py",
+      "release_path": "src/dc_verify/step/step8/code/external_verification.py",
+      "original_sha256": "c7535d7c0530be54d417c4a287b9c641b4f57762ed83b1d8e294bbaac8187b2f",
+      "release_sha256": "7312898719d290e1445141fd81829bb2b4f0dd2c8d5977944986c150a14c7b81",
+      "modifications": [
+        "Package-qualified imports",
+        "Removed sys.path insertion",
+        "DC_VERIFY_DATA_DIR runtime paths"
+      ],
+      "stage": 8,
+      "functions": [
+        "StrictModel",
+        "Correction",
+        "RequirementSupport",
+        "ClaimReview",
+        "DocumentReview",
+        "SemanticAuditRow",
+        "SemanticAudit",
+        "normalize",
+        "html_format_proof",
+        "system_prompt",
+        "load_jobs",
+        "prepare_original",
+        "enforce_review",
+        "reusable_evidence",
+        "assess_document",
+        "audit_semantics",
+        "review_date",
+        "failed_document",
+        "execute",
+        "verify_execution",
+        "main"
+      ],
+      "imports": [
+        "__future__",
+        "collections",
+        "datetime",
+        "dc_verify.codex",
+        "dc_verify.settings",
+        "dc_verify.step.step3.code.analysis",
+        "dc_verify.step.step4.code.source_verifier",
+        "dc_verify.step.step4.code.source_verifier_prompt",
+        "dc_verify.step.step5.code.assess_evidence",
+        "dc_verify.step.step5.code.evidence_prompt",
+        "dc_verify.step.step7.code.document_preparer",
+        "dc_verify.step.step7.code.search_fetcher",
+        "dc_verify.step.step8.code.external_analysis",
+        "dc_verify.step.step8.code.prompt",
+        "dc_verify.step.step8.code.source_admission",
+        "pathlib",
+        "pydantic",
+        "typing"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step8/code/pair_matcher.py",
+      "release_path": "src/dc_verify/step/step8/code/pair_matcher.py",
+      "original_sha256": "94e9ede1f32ebfec084f0f2bbdeb49ed647f38fcc83cdfd48e8493205510f4c8",
+      "release_sha256": "6bfcadc4a63910c910f4db73a92d0d8126c3688ba66218d2b192c6a47ca21737",
+      "modifications": [
+        "Package-qualified imports"
+      ],
+      "stage": 8,
+      "functions": [
+        "tokens",
+        "overlap",
+        "family",
+        "is_capacity",
+        "explicit_time",
+        "time_relation",
+        "candidate_kind",
+        "soft_diagnostic",
+        "make_pair",
+        "select_pairs"
+      ],
+      "imports": [
+        "__future__",
+        "collections",
+        "datetime",
+        "dc_verify.settings"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step8/code/prompt.py",
+      "release_path": "src/dc_verify/step/step8/code/prompt.py",
+      "original_sha256": "d2176429bb257eb3511e42aa7caa9d61ca613421aceed5d1034d5c2f4c69dd42",
+      "release_sha256": "545a0a4a22a516121e2de1a9711f74b270f9a4c6bd1adf1b0c2ccda2dd84767d",
+      "modifications": [
+        "Package-qualified imports"
+      ],
+      "stage": 8,
+      "functions": [],
+      "imports": [
+        "dc_verify.settings"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step8/code/source_admission.py",
+      "release_path": "src/dc_verify/step/step8/code/source_admission.py",
+      "original_sha256": "90c280df553f6467a61e698538f6cce9fe4f8afa18e7bf7e4947ea0a2d6fd193",
+      "release_sha256": "7421773ef27ef63b0f88a71368028d6a051dd7c5ca2660c397db7d3d31a92834",
+      "modifications": [
+        "Package-qualified imports",
+        "Removed sys.path insertion",
+        "DC_VERIFY_DATA_DIR runtime paths"
+      ],
+      "stage": 8,
+      "functions": [
+        "read_json",
+        "write_json",
+        "digest",
+        "now",
+        "latest_preparation",
+        "date_window",
+        "relation_to_cutoff",
+        "assess_document",
+        "guard_claims",
+        "run_gate",
+        "main"
+      ],
+      "imports": [
+        "__future__",
+        "collections",
+        "datetime",
+        "dc_verify.settings",
+        "dc_verify.step.step8.code.prompt",
+        "pathlib"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step8/code/test_cross_source.py",
+      "release_path": "src/dc_verify/step/step8/code/test_cross_source.py",
+      "original_sha256": "23f83d3450d14be0f12026d684287c4d9d2a0a340b7192a53892a49b9155b26b",
+      "release_sha256": "b9d8a6dde075c81fa4a365f92fec0b25c175340a97e3639eba1dd2395e214925",
+      "modifications": [
+        "Package-qualified imports",
+        "Removed sys.path insertion",
+        "DC_VERIFY_DATA_DIR runtime paths",
+        "Canonical fixture source path"
+      ],
+      "stage": 8,
+      "functions": [
+        "item",
+        "pair",
+        "response",
+        "MatcherTests",
+        "GuardTests",
+        "InputTests",
+        "ActualArtifactRegression"
+      ],
+      "imports": [
+        "collections",
+        "dc_verify.settings",
+        "dc_verify.step.step8.code",
+        "pathlib",
+        "unittest.mock"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step8/code/test_external_analysis.py",
+      "release_path": "src/dc_verify/step/step8/code/test_external_analysis.py",
+      "original_sha256": "25b82e3f015e91e5e6b3045dac3b6a3c15241c8a0653c798fd724d61c5c08fc9",
+      "release_sha256": "5489c9d5a4b50b167d0efb0b118858c54c9147074ad691decc71130626e25a3e",
+      "modifications": [
+        "Package-qualified imports"
+      ],
+      "stage": 8,
+      "functions": [
+        "sample_result",
+        "ExternalAnalysisTests"
+      ],
+      "imports": [
+        "datetime",
+        "dc_verify.settings",
+        "dc_verify.step.step8.code",
+        "dc_verify.step.step8.code.source_admission",
+        "pathlib",
+        "unittest.mock"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step8/code/test_external_verification.py",
+      "release_path": "src/dc_verify/step/step8/code/test_external_verification.py",
+      "original_sha256": "9e1198ab87700cd94134f91757ca8b50c6df332f7bc67fd829a654a149470470",
+      "release_sha256": "d6c0c6ea30253b0dee1a079acee4692576dc0460d59e9a189944f62be43fba5c",
+      "modifications": [
+        "Package-qualified imports",
+        "Removed sys.path insertion"
+      ],
+      "stage": 8,
+      "functions": [
+        "fixture",
+        "ReviewTests"
+      ],
+      "imports": [
+        "dc_verify.settings",
+        "dc_verify.step.step8.code",
+        "pathlib",
+        "unittest.mock"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step8/code/test_source_admission.py",
+      "release_path": "src/dc_verify/step/step8/code/test_source_admission.py",
+      "original_sha256": "bb5688e0fcd223ef8e677f24a8160f738078812deb590c3a4f4867440ec061a5",
+      "release_sha256": "d8671e515fd612702b30ecb08db43e98e33aaa7684ef664b96363ed8242f4a2d",
+      "modifications": [
+        "Package-qualified imports"
+      ],
+      "stage": 8,
+      "functions": [
+        "AdmissionTests"
+      ],
+      "imports": [
+        "dc_verify.settings",
+        "dc_verify.step.step8.code",
+        "pathlib",
+        "unittest.mock"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step9/code/controller.py",
+      "release_path": "src/dc_verify/step/step9/code/controller.py",
+      "original_sha256": "afd6c9a75e24b2c147e4dd67c47fbaae1d84b5855c20aa6ec33056f9befa8012",
+      "release_sha256": "9fd09ed134eb391eb033534c5590c4da9960fa041f1139fa3abeecf0632ec636",
+      "modifications": [
+        "Package-qualified imports",
+        "Removed sys.path insertion",
+        "DC_VERIFY_DATA_DIR runtime paths"
+      ],
+      "stage": 9,
+      "functions": [
+        "execute",
+        "verify_execution",
+        "main"
+      ],
+      "imports": [
+        "__future__",
+        "datetime",
+        "dc_verify.codex",
+        "dc_verify.settings",
+        "dc_verify.step.step6.code.controller_replan",
+        "dc_verify.step.step8.code.cross_source_input",
+        "dc_verify.step.step8.code.source_admission",
+        "dc_verify.step.step9.code.prompt",
+        "dc_verify.step.step9.code.state_restoration",
+        "pathlib"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step9/code/prompt.py",
+      "release_path": "src/dc_verify/step/step9/code/prompt.py",
+      "original_sha256": "32cc484a05059450c1e8ca0c860ae1057040b5a772295cd3c4dc4111bd8c93c5",
+      "release_sha256": "ab2c7a82278f159200b7178049aaab9896099e1523b94a9fa268adefa629a3e4",
+      "modifications": [
+        "Package-qualified imports"
+      ],
+      "stage": 9,
+      "functions": [
+        "build_user_prompt"
+      ],
+      "imports": [
+        "dc_verify.settings"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step9/code/state_restoration.py",
+      "release_path": "src/dc_verify/step/step9/code/state_restoration.py",
+      "original_sha256": "4f988173c30c16f27f98ee76439be0987ac53afc6edaa5b78d29e7109032f6eb",
+      "release_sha256": "8c1972d8caaa7239e27c3bedbb0d741d7b65e865e1811e92db78edb1648daa29",
+      "modifications": [
+        "Package-qualified imports",
+        "Removed sys.path insertion",
+        "DC_VERIFY_DATA_DIR runtime paths"
+      ],
+      "stage": 9,
+      "functions": [
+        "load_cross_source",
+        "restore_search_history",
+        "evidence_observation",
+        "restore"
+      ],
+      "imports": [
+        "__future__",
+        "collections",
+        "dc_verify.settings",
+        "dc_verify.step.step6.code.controller_replan",
+        "dc_verify.step.step8.code.cross_source",
+        "dc_verify.step.step8.code.cross_source_input",
+        "dc_verify.step.step8.code.pair_matcher",
+        "dc_verify.step.step8.code.source_admission",
+        "pathlib"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step9/code/test_controller.py",
+      "release_path": "src/dc_verify/step/step9/code/test_controller.py",
+      "original_sha256": "f83388cd5ad3b4144c0df4d7bb9078a13dabbca272335c110d00dbcd06838459",
+      "release_sha256": "a1706376962b0b0869d77a17d41416665aa7104b8c21bad76d8708048f378b21",
+      "modifications": [
+        "Package-qualified imports",
+        "Removed sys.path insertion",
+        "DC_VERIFY_DATA_DIR runtime paths",
+        "Nested package imports corrected"
+      ],
+      "stage": 9,
+      "functions": [
+        "fixture",
+        "terminal",
+        "PolicyTests",
+        "ArtifactRegression"
+      ],
+      "imports": [
+        "dc_verify.settings",
+        "dc_verify.step.step6.code.controller_replan",
+        "dc_verify.step.step8.code.cross_source_input",
+        "dc_verify.step.step8.code.source_admission",
+        "dc_verify.step.step9.code.controller",
+        "dc_verify.step.step9.code.state_restoration",
+        "pathlib",
+        "state_restoration",
+        "unittest.mock"
+      ]
+    },
+    {
+      "original_path": "01_experiments/code/step/step10/data/report_policy.json",
+      "release_path": "src/dc_verify/report_policy.json",
+      "original_sha256": "d5ec64c0b6ee0ae0dfeaf5af5574293fe46df43cded0852cbf3c2de9538e31cd",
+      "release_sha256": "d5ec64c0b6ee0ae0dfeaf5af5574293fe46df43cded0852cbf3c2de9538e31cd",
+      "modifications": [],
+      "stage": 10,
+      "functions": [],
+      "imports": []
+    }
+  ],
+  "original_step_directories": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "step11": "NOT_FOUND",
+  "new_packaging_helpers": [
+    "src/dc_verify/settings.py",
+    "src/dc_verify/cli.py",
+    "src/dc_verify/demo.py",
+    "run.sh"
+  ],
+  "integration_status": "INDIVIDUAL_STAGE_COMMANDS_ONLY_NO_AUTOMATED_END_TO_END",
+  "modules": [
+    {
+      "command": "ocr",
+      "module": "dc_verify.step.step1.code.OCR",
+      "original_path": "01_experiments/code/step/step1/code/OCR.py",
+      "release_path": "src/dc_verify/step/step1/code/OCR.py",
+      "role": "STEP 1: prompt.py → codex.py → gpt-5.4-mini PDF OCR → data/output/.",
+      "implementation_status": "IMPLEMENTED",
+      "functions_or_classes": [
+        "split_pages",
+        "run_ocr",
+        "main"
+      ],
+      "prompt_dependencies": [
+        "dc_verify.step.step1.code.prompt"
+      ],
+      "local_module_dependencies": [
+        "dc_verify.codex",
+        "dc_verify.settings",
+        "dc_verify.step.step1.code.prompt"
+      ],
+      "cli_input_output_options": [
+        {
+          "arguments": [
+            "pdf"
+          ],
+          "settings": {
+            "type": "Path",
+            "nargs": "'?'",
+            "help": "'생략하면 step1/data/의 PDF 한 개'"
+          }
+        },
+        {
+          "arguments": [
+            "--output-dir"
+          ],
+          "settings": {
+            "type": "Path",
+            "default": "stage_data(1) / 'output'"
+          }
+        },
+        {
+          "arguments": [
+            "--max-output-tokens"
+          ],
+          "settings": {
+            "type": "int",
+            "default": "32768"
+          }
+        }
+      ],
+      "stage_execution_records": [
+        {
+          "relative_path": "01_experiments/code/step/step1/data/output/kinx_ir_240925_20261111T064400154996Z/ocr.json",
+          "status": "SUCCESS"
+        }
+      ],
+      "offline_import_and_help_tested": true,
+      "live_execution_in_this_task": false,
+      "live_adapter_status": "SEE_STAGE_EXECUTION_RECORDS",
+      "integration_changes": "Package-qualified imports and configured runtime paths. Multi-stage automatic handoff not implemented."
+    },
+    {
+      "command": "plan",
+      "module": "dc_verify.step.step2.code.controller",
+      "original_path": "01_experiments/code/step/step2/code/controller.py",
+      "release_path": "src/dc_verify/step/step2/code/controller.py",
+      "role": "STEP 2: OCR 인덱스 → Controller 초기 계획 → 원문을 붙인 Analysis 입력.\n\nController API만 실행한다. Analysis Agent·검증·외부 탐색은 실행하지 않는다.",
+      "implementation_status": "IMPLEMENTED",
+      "functions_or_classes": [
+        "StrictModel",
+        "DocumentScope",
+        "Task",
+        "NextAction",
+        "AnalysisHandoff",
+        "ControllerPlan",
+        "tokenize",
+        "search_terms",
+        "read_json",
+        "write_json",
+        "load_input",
+        "build_document_index",
+        "prepare_input",
+        "validate_plan",
+        "build_analysis_input",
+        "run_controller",
+        "main"
+      ],
+      "prompt_dependencies": [
+        "dc_verify.step.step2.code.prompt"
+      ],
+      "local_module_dependencies": [
+        "dc_verify.codex",
+        "dc_verify.settings",
+        "dc_verify.step.step2.code.prompt"
+      ],
+      "cli_input_output_options": [
+        {
+          "arguments": [
+            "--input"
+          ],
+          "settings": {
+            "type": "Path",
+            "default": "INPUT_PATH"
+          }
+        },
+        {
+          "arguments": [
+            "--request-config"
+          ],
+          "settings": {
+            "type": "Path",
+            "default": "REQUEST_PATH"
+          }
+        },
+        {
+          "arguments": [
+            "--output-dir"
+          ],
+          "settings": {
+            "type": "Path",
+            "default": "OUTPUT_DIR"
+          }
+        },
+        {
+          "arguments": [
+            "--dry-run"
+          ],
+          "settings": {
+            "action": "'store_true'",
+            "help": "'API 호출 없이 입력만 저장'"
+          }
+        }
+      ],
+      "stage_execution_records": [
+        {
+          "relative_path": "01_experiments/code/step/step2/data/output/controller_20261111T070344376745Z/run.json",
+          "status": "PREPARED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step2/data/output/controller_20261111T070429223893Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step2/data/output/controller_20261111T070718837692Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        }
+      ],
+      "offline_import_and_help_tested": true,
+      "live_execution_in_this_task": false,
+      "live_adapter_status": "SEE_STAGE_EXECUTION_RECORDS",
+      "integration_changes": "Package-qualified imports and configured runtime paths. Multi-stage automatic handoff not implemented."
+    },
+    {
+      "command": "analysis",
+      "module": "dc_verify.step.step3.code.analysis",
+      "original_path": "01_experiments/code/step/step3/code/analysis.py",
+      "release_path": "src/dc_verify/step/step3/code/analysis.py",
+      "role": "STEP 3-1 Analysis Agent. 선택 OCR만 추출; 검색·재계획·원본 검증은 수행하지 않는다.",
+      "implementation_status": "IMPLEMENTED",
+      "functions_or_classes": [
+        "StrictModel",
+        "PageRef",
+        "Claim",
+        "Coverage",
+        "MissingInformation",
+        "AnalysisResult",
+        "read_json",
+        "write_json",
+        "prepare_input",
+        "explicit_numbers",
+        "scoped_response_schema",
+        "bind_source_whitespace",
+        "external_semantic_issues",
+        "check_result",
+        "conservative_extraction",
+        "run_analysis",
+        "main"
+      ],
+      "prompt_dependencies": [
+        "dc_verify.step.step3.code.analysis_prompt"
+      ],
+      "local_module_dependencies": [
+        "dc_verify.codex",
+        "dc_verify.settings",
+        "dc_verify.step.step3.code.analysis_prompt"
+      ],
+      "cli_input_output_options": [
+        {
+          "arguments": [
+            "--input"
+          ],
+          "settings": {
+            "type": "Path",
+            "default": "INPUT_PATH"
+          }
+        },
+        {
+          "arguments": [
+            "--request-config"
+          ],
+          "settings": {
+            "type": "Path",
+            "default": "REQUEST_PATH"
+          }
+        },
+        {
+          "arguments": [
+            "--output-dir"
+          ],
+          "settings": {
+            "type": "Path",
+            "default": "OUTPUT_DIR"
+          }
+        },
+        {
+          "arguments": [
+            "--dry-run"
+          ],
+          "settings": {
+            "action": "'store_true'"
+          }
+        }
+      ],
+      "stage_execution_records": [
+        {
+          "relative_path": "01_experiments/code/step/step3/data/output/analysis_20261111T071740697903Z/run.json",
+          "status": "PREPARED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step3/data/output/analysis_20261111T071749196391Z/run.json",
+          "status": "FAILED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step3/data/output/analysis_20261111T071853863114Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        }
+      ],
+      "offline_import_and_help_tested": true,
+      "live_execution_in_this_task": false,
+      "live_adapter_status": "SEE_STAGE_EXECUTION_RECORDS",
+      "integration_changes": "Package-qualified imports and configured runtime paths. Multi-stage automatic handoff not implemented."
+    },
+    {
+      "command": "source-verification",
+      "module": "dc_verify.step.step4.code.source_verifier",
+      "original_path": "01_experiments/code/step/step4/code/source_verifier.py",
+      "release_path": "src/dc_verify/step/step4/code/source_verifier.py",
+      "role": "STEP 4-1: OCR 인용 검사 + 해시가 확인된 원본 PDF 이미지 대조.",
+      "implementation_status": "IMPLEMENTED",
+      "functions_or_classes": [
+        "StrictModel",
+        "FieldChecks",
+        "ClaimResult",
+        "Observation",
+        "VerificationResult",
+        "read_json",
+        "write_json",
+        "sha256",
+        "load_inputs",
+        "check_ocr",
+        "render_original_pages",
+        "validate_model_result",
+        "failed_result",
+        "apply_review_guards",
+        "assemble_results",
+        "run_verifier",
+        "main"
+      ],
+      "prompt_dependencies": [
+        "dc_verify.step.step4.code.source_verifier_prompt"
+      ],
+      "local_module_dependencies": [
+        "dc_verify.codex",
+        "dc_verify.settings",
+        "dc_verify.step.step4.code.source_verifier_prompt"
+      ],
+      "cli_input_output_options": [
+        {
+          "arguments": [
+            "--analysis"
+          ],
+          "settings": {
+            "type": "Path",
+            "default": "stage_data(4) / 'analysis_result.json'"
+          }
+        },
+        {
+          "arguments": [
+            "--ocr-source"
+          ],
+          "settings": {
+            "type": "Path",
+            "default": "stage_data(4) / 'analysis_input.json'"
+          }
+        },
+        {
+          "arguments": [
+            "--pdf"
+          ],
+          "settings": {
+            "type": "Path",
+            "required": "True"
+          }
+        },
+        {
+          "arguments": [
+            "--output-dir"
+          ],
+          "settings": {
+            "type": "Path",
+            "default": "stage_data(4) / 'output'"
+          }
+        },
+        {
+          "arguments": [
+            "--dry-run"
+          ],
+          "settings": {
+            "action": "'store_true'"
+          }
+        }
+      ],
+      "stage_execution_records": [
+        {
+          "relative_path": "01_experiments/code/step/step4/data/output/source_verification_20261111T073150580441Z/run.json",
+          "status": "PREPARED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step4/data/output/source_verification_20261111T073259815300Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step4/data/output/source_verification_20261111T073637655987Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        }
+      ],
+      "offline_import_and_help_tested": true,
+      "live_execution_in_this_task": false,
+      "live_adapter_status": "SEE_STAGE_EXECUTION_RECORDS",
+      "integration_changes": "Package-qualified imports and configured runtime paths. Multi-stage automatic handoff not implemented."
+    },
+    {
+      "command": "evidence",
+      "module": "dc_verify.step.step5.code.assess_evidence",
+      "original_path": "01_experiments/code/step/step5/code/assess_evidence.py",
+      "release_path": "src/dc_verify/step/step5/code/assess_evidence.py",
+      "role": "STEP 4-2 — AssessEvidence. 원문 기재와 독립 입증을 구분한다.",
+      "implementation_status": "IMPLEMENTED",
+      "functions_or_classes": [
+        "StrictModel",
+        "ClaimAssessment",
+        "UnresolvedRequirement",
+        "ControllerObservation",
+        "EvidenceAssessment",
+        "read_json",
+        "write_json",
+        "load_inputs",
+        "validate_assessment",
+        "prepare_api_inputs",
+        "merge_not_assessed",
+        "assess_evidence",
+        "main"
+      ],
+      "prompt_dependencies": [
+        "dc_verify.step.step5.code.evidence_prompt"
+      ],
+      "local_module_dependencies": [
+        "dc_verify.codex",
+        "dc_verify.settings",
+        "dc_verify.step.step5.code.evidence_prompt"
+      ],
+      "cli_input_output_options": [
+        {
+          "arguments": [
+            "--analysis"
+          ],
+          "settings": {
+            "type": "Path",
+            "default": "stage_data(5) / 'analysis_result.json'"
+          }
+        },
+        {
+          "arguments": [
+            "--source"
+          ],
+          "settings": {
+            "type": "Path",
+            "default": "stage_data(5) / 'source_verification.json'"
+          }
+        },
+        {
+          "arguments": [
+            "--review-context"
+          ],
+          "settings": {
+            "type": "Path",
+            "default": "stage_data(5) / 'review_context.json'"
+          }
+        },
+        {
+          "arguments": [
+            "--output-dir"
+          ],
+          "settings": {
+            "type": "Path",
+            "default": "stage_data(5) / 'output'"
+          }
+        },
+        {
+          "arguments": [
+            "--dry-run"
+          ],
+          "settings": {
+            "action": "'store_true'"
+          }
+        }
+      ],
+      "stage_execution_records": [
+        {
+          "relative_path": "01_experiments/code/step/step5/data/output/evidence_20261111T074834755359Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step5/data/output/evidence_20261111T074619521448Z/run.json",
+          "status": "PREPARED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step5/data/output/evidence_20261111T074708588603Z/run.json",
+          "status": "FAILED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        }
+      ],
+      "offline_import_and_help_tested": true,
+      "live_execution_in_this_task": false,
+      "live_adapter_status": "SEE_STAGE_EXECUTION_RECORDS",
+      "integration_changes": "Package-qualified imports and configured runtime paths. Multi-stage automatic handoff not implemented."
+    },
+    {
+      "command": "replan",
+      "module": "dc_verify.step.step6.code.controller_replan",
+      "original_path": "01_experiments/code/step/step6/code/controller_replan.py",
+      "release_path": "src/dc_verify/step/step6/code/controller_replan.py",
+      "role": "STEP 6 — Observe & Replan. 다음 행동을 선택하고 저장한다.",
+      "implementation_status": "IMPLEMENTED",
+      "functions_or_classes": [
+        "StrictModel",
+        "PrioritizedIssue",
+        "SearchConstraints",
+        "LocalScope",
+        "NextAction",
+        "PlannedTask",
+        "ControllerDecision",
+        "read_json",
+        "write_json",
+        "signature",
+        "prepare_input",
+        "validate_decision",
+        "build_action_input",
+        "run_replan",
+        "IssueObservation",
+        "PostEvidenceDecision",
+        "validate_post_evidence_decision",
+        "normalize_post_evidence_metadata",
+        "decide_after_cross_check",
+        "main"
+      ],
+      "prompt_dependencies": [
+        "dc_verify.step.step6.code.controller_decision_prompt"
+      ],
+      "local_module_dependencies": [
+        "dc_verify.codex",
+        "dc_verify.settings",
+        "dc_verify.step.step6.code.controller_decision_prompt"
+      ],
+      "cli_input_output_options": [
+        {
+          "arguments": [
+            "--data-dir"
+          ],
+          "settings": {
+            "type": "Path",
+            "default": "stage_data(6)"
+          }
+        },
+        {
+          "arguments": [
+            "--output-dir"
+          ],
+          "settings": {
+            "type": "Path",
+            "default": "stage_data(6) / 'output'"
+          }
+        },
+        {
+          "arguments": [
+            "--dry-run"
+          ],
+          "settings": {
+            "action": "'store_true'"
+          }
+        }
+      ],
+      "stage_execution_records": [
+        {
+          "relative_path": "01_experiments/code/step/step6/data/output/controller_replan_20261111T075842586324Z/run.json",
+          "status": "FAILED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step6/data/output/controller_replan_20261111T075734079805Z/run.json",
+          "status": "NEEDS_REVIEW",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step6/data/output/controller_replan_20261111T075936371117Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step6/data/output/controller_replan_20261111T075448849054Z/run.json",
+          "status": "PREPARED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        }
+      ],
+      "offline_import_and_help_tested": true,
+      "live_execution_in_this_task": false,
+      "live_adapter_status": "SEE_STAGE_EXECUTION_RECORDS",
+      "integration_changes": "Package-qualified imports and configured runtime paths. Multi-stage automatic handoff not implemented."
+    },
+    {
+      "command": "search-plan",
+      "module": "dc_verify.step.step7.code.search_planner",
+      "original_path": "01_experiments/code/step/step7/code/search_planner.py",
+      "release_path": "src/dc_verify/step/step7/code/search_planner.py",
+      "role": "STEP 7-1: Controller가 호출할 수 있는 검색 계획 함수와 파일 실행 CLI.\n\n검색 실행·원문 확보·증빙 판정은 수행하지 않는다.",
+      "implementation_status": "IMPLEMENTED",
+      "functions_or_classes": [
+        "StrictModel",
+        "SearchTask",
+        "DeferredIssue",
+        "SearchConstraints",
+        "SearchPlan",
+        "read_json",
+        "write_json",
+        "normalized_query",
+        "task_signature",
+        "response_schema",
+        "prepare_api_input",
+        "prepare_input",
+        "validate_plan",
+        "plan_search",
+        "build_executor_input",
+        "run_planner",
+        "main"
+      ],
+      "prompt_dependencies": [
+        "dc_verify.step.step7.code.prompt"
+      ],
+      "local_module_dependencies": [
+        "dc_verify.codex",
+        "dc_verify.settings",
+        "dc_verify.step.step7.code.prompt"
+      ],
+      "cli_input_output_options": [
+        {
+          "arguments": [
+            "--data-dir"
+          ],
+          "settings": {
+            "type": "Path",
+            "default": "stage_data(7)"
+          }
+        },
+        {
+          "arguments": [
+            "--output-dir"
+          ],
+          "settings": {
+            "type": "Path",
+            "default": "stage_data(7) / 'output'"
+          }
+        },
+        {
+          "arguments": [
+            "--dry-run"
+          ],
+          "settings": {
+            "action": "'store_true'"
+          }
+        }
+      ],
+      "stage_execution_records": [
+        {
+          "relative_path": "01_experiments/code/step/step7/data/output/document_preparation_20261111T085229105706Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step7/data/output/search_plan_20261111T081335148497Z/run.json",
+          "status": "FAILED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step7/data/output/search_plan_20261111T081210172668Z/run.json",
+          "status": "FAILED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step7/data/output/search_plan_20261111T081516590621Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step7/data/output/search_execution_20261111T082440141178Z/run.json",
+          "status": "COMPLETED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step7/data/output/search_plan_20261111T081109486343Z/run.json",
+          "status": "PREPARED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        }
+      ],
+      "offline_import_and_help_tested": true,
+      "live_execution_in_this_task": false,
+      "live_adapter_status": "SEE_STAGE_EXECUTION_RECORDS",
+      "integration_changes": "Package-qualified imports and configured runtime paths. Multi-stage automatic handoff not implemented."
+    },
+    {
+      "command": "search-execute",
+      "module": "dc_verify.step.step7.code.search_executor",
+      "original_path": "01_experiments/code/step/step7/code/search_executor.py",
+      "release_path": "src/dc_verify/step/step7/code/search_executor.py",
+      "role": "STEP 7-2: 검색 실행 어댑터, 실제 세션 응답 수집, 후보·예산 기록.\n\nCodex 도구는 Python SDK가 아니다. 세션은 실제 web__run 응답 영수증을\nimport-receipts로 전달한다. Python 단독 실행은 연결된 API 어댑터를 사용한다.",
+      "implementation_status": "IMPLEMENTED",
+      "functions_or_classes": [
+        "now",
+        "read_json",
+        "write_json",
+        "locked",
+        "canonical_url",
+        "query_key",
+        "safe_date",
+        "parse_session_results",
+        "select_tool",
+        "init_run",
+        "remaining_attempts",
+        "make_session_request",
+        "classify_document",
+        "merge_candidate",
+        "import_receipts",
+        "add_link_candidates",
+        "finalize",
+        "_finalize",
+        "main"
+      ],
+      "prompt_dependencies": [],
+      "local_module_dependencies": [
+        "dc_verify.settings"
+      ],
+      "cli_input_output_options": [
+        {
+          "arguments": [
+            "--input"
+          ],
+          "settings": {
+            "type": "Path",
+            "default": "DEFAULT_INPUT"
+          }
+        },
+        {
+          "arguments": [
+            "--runtime-tools"
+          ],
+          "settings": {
+            "type": "Path",
+            "required": "True"
+          }
+        },
+        {
+          "arguments": [
+            "--output-dir"
+          ],
+          "settings": {
+            "type": "Path",
+            "default": "stage_data(7) / 'output'"
+          }
+        },
+        {
+          "arguments": [
+            "--run"
+          ],
+          "settings": {
+            "type": "Path",
+            "required": "True"
+          }
+        },
+        {
+          "arguments": [
+            "files"
+          ],
+          "settings": {
+            "type": "Path",
+            "nargs": "'+'"
+          }
+        },
+        {
+          "arguments": [
+            "--run"
+          ],
+          "settings": {
+            "type": "Path",
+            "required": "True"
+          }
+        },
+        {
+          "arguments": [
+            "--run"
+          ],
+          "settings": {
+            "type": "Path",
+            "required": "True"
+          }
+        },
+        {
+          "arguments": [
+            "--task-id"
+          ],
+          "settings": {
+            "required": "True"
+          }
+        },
+        {
+          "arguments": [
+            "--fallback"
+          ],
+          "settings": {
+            "action": "'store_true'"
+          }
+        }
+      ],
+      "stage_execution_records": [
+        {
+          "relative_path": "01_experiments/code/step/step7/data/output/document_preparation_20261111T085229105706Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step7/data/output/search_plan_20261111T081335148497Z/run.json",
+          "status": "FAILED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step7/data/output/search_plan_20261111T081210172668Z/run.json",
+          "status": "FAILED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step7/data/output/search_plan_20261111T081516590621Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step7/data/output/search_execution_20261111T082440141178Z/run.json",
+          "status": "COMPLETED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step7/data/output/search_plan_20261111T081109486343Z/run.json",
+          "status": "PREPARED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        }
+      ],
+      "offline_import_and_help_tested": true,
+      "live_execution_in_this_task": false,
+      "live_adapter_status": "SEE_STAGE_EXECUTION_RECORDS",
+      "integration_changes": "Package-qualified imports and configured runtime paths. Multi-stage automatic handoff not implemented."
+    },
+    {
+      "command": "search-api",
+      "module": "dc_verify.step.step7.code.search_api_adapter",
+      "original_path": "01_experiments/code/step/step7/code/search_api_adapter.py",
+      "release_path": "src/dc_verify/step/step7/code/search_api_adapter.py",
+      "role": "Python 단독 검색용 Tavily 어댑터. 세션 도구를 SDK로 가장하지 않는다.\n\n실행 전 TAVILY_API_KEY 필요. 키가 없으면 호출·예산 차감 없이 중단한다.\n이번 실제 실행은 Codex 세션 도구이며 이 어댑터의 네트워크 실행은 별도다.",
+      "implementation_status": "IMPLEMENTED",
+      "functions_or_classes": [
+        "load_tavily_key",
+        "tavily_search",
+        "execute_api",
+        "main"
+      ],
+      "prompt_dependencies": [],
+      "local_module_dependencies": [
+        "dc_verify.settings",
+        "dc_verify.step.step7.code"
+      ],
+      "cli_input_output_options": [
+        {
+          "arguments": [
+            "--run"
+          ],
+          "settings": {
+            "type": "Path",
+            "required": "True"
+          }
+        }
+      ],
+      "stage_execution_records": [
+        {
+          "relative_path": "01_experiments/code/step/step7/data/output/document_preparation_20261111T085229105706Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step7/data/output/search_plan_20261111T081335148497Z/run.json",
+          "status": "FAILED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step7/data/output/search_plan_20261111T081210172668Z/run.json",
+          "status": "FAILED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step7/data/output/search_plan_20261111T081516590621Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step7/data/output/search_execution_20261111T082440141178Z/run.json",
+          "status": "COMPLETED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step7/data/output/search_plan_20261111T081109486343Z/run.json",
+          "status": "PREPARED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        }
+      ],
+      "offline_import_and_help_tested": true,
+      "live_execution_in_this_task": false,
+      "live_adapter_status": "NOT_TESTED",
+      "integration_changes": "Package-qualified imports and configured runtime paths. Multi-stage automatic handoff not implemented."
+    },
+    {
+      "command": "fetch",
+      "module": "dc_verify.step.step7.code.search_fetcher",
+      "original_path": "01_experiments/code/step/step7/code/search_fetcher.py",
+      "release_path": "src/dc_verify/step/step7/code/search_fetcher.py",
+      "role": "공식 후보 원문 수집. 수치 추출·사실 검증은 수행하지 않는다.",
+      "implementation_status": "IMPLEMENTED",
+      "functions_or_classes": [
+        "NoRedirect",
+        "check_public_url",
+        "fetch_bytes",
+        "PublicationParser",
+        "publication_date",
+        "LinkParser",
+        "discover_download_links",
+        "collect",
+        "main"
+      ],
+      "prompt_dependencies": [],
+      "local_module_dependencies": [
+        "dc_verify.settings",
+        "dc_verify.step.step7.code"
+      ],
+      "cli_input_output_options": [
+        {
+          "arguments": [
+            "--run"
+          ],
+          "settings": {
+            "type": "Path",
+            "required": "True"
+          }
+        },
+        {
+          "arguments": [
+            "--urls-file"
+          ],
+          "settings": {
+            "type": "Path",
+            "required": "True"
+          }
+        }
+      ],
+      "stage_execution_records": [
+        {
+          "relative_path": "01_experiments/code/step/step7/data/output/document_preparation_20261111T085229105706Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step7/data/output/search_plan_20261111T081335148497Z/run.json",
+          "status": "FAILED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step7/data/output/search_plan_20261111T081210172668Z/run.json",
+          "status": "FAILED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step7/data/output/search_plan_20261111T081516590621Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step7/data/output/search_execution_20261111T082440141178Z/run.json",
+          "status": "COMPLETED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step7/data/output/search_plan_20261111T081109486343Z/run.json",
+          "status": "PREPARED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        }
+      ],
+      "offline_import_and_help_tested": true,
+      "live_execution_in_this_task": false,
+      "live_adapter_status": "SEE_STAGE_EXECUTION_RECORDS",
+      "integration_changes": "Package-qualified imports and configured runtime paths. Multi-stage automatic handoff not implemented."
+    },
+    {
+      "command": "prepare-documents",
+      "module": "dc_verify.step.step7.code.document_preparer",
+      "original_path": "01_experiments/code/step/step7/code/document_preparer.py",
+      "release_path": "src/dc_verify/step/step7/code/document_preparer.py",
+      "role": "STEP 7-3: 저장된 원문 검증·관련 페이지 선별·OCR·Analysis 입력 준비.\n\n웹 검색·원문 추가 수집·Analysis 실행·Controller 재계획 없음.",
+      "implementation_status": "IMPLEMENTED",
+      "functions_or_classes": [
+        "StrictModel",
+        "PageChoice",
+        "Screening",
+        "OCRPage",
+        "OCRResult",
+        "sha",
+        "text_quality",
+        "document_period",
+        "period_cutoff",
+        "parse_html",
+        "matches_target",
+        "relevant_segments",
+        "Preparer",
+        "main"
+      ],
+      "prompt_dependencies": [
+        "dc_verify.step.step7.code.prompt"
+      ],
+      "local_module_dependencies": [
+        "dc_verify.codex",
+        "dc_verify.settings",
+        "dc_verify.step.step7.code.prompt",
+        "dc_verify.step.step7.code.search_executor",
+        "dc_verify.step.step7.code.search_fetcher"
+      ],
+      "cli_input_output_options": [
+        {
+          "arguments": [
+            "--source-run"
+          ],
+          "settings": {
+            "type": "Path",
+            "required": "True"
+          }
+        },
+        {
+          "arguments": [
+            "--output-dir"
+          ],
+          "settings": {
+            "type": "Path",
+            "default": "stage_data(7) / 'output'"
+          }
+        },
+        {
+          "arguments": [
+            "--allow-vision"
+          ],
+          "settings": {
+            "action": "'store_true'",
+            "help": "'필요한 OCR·페이지 선별에 기존 API 사용 허용. 검색·Analysis 실행 없음'"
+          }
+        },
+        {
+          "arguments": [
+            "--resume"
+          ],
+          "settings": {
+            "type": "Path"
+          }
+        },
+        {
+          "arguments": [
+            "--cache-only"
+          ],
+          "settings": {
+            "action": "'store_true'",
+            "help": "'기존 API 응답만 사용하고 새 요청 차단'"
+          }
+        }
+      ],
+      "stage_execution_records": [
+        {
+          "relative_path": "01_experiments/code/step/step7/data/output/document_preparation_20261111T085229105706Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step7/data/output/search_plan_20261111T081335148497Z/run.json",
+          "status": "FAILED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step7/data/output/search_plan_20261111T081210172668Z/run.json",
+          "status": "FAILED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step7/data/output/search_plan_20261111T081516590621Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step7/data/output/search_execution_20261111T082440141178Z/run.json",
+          "status": "COMPLETED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step7/data/output/search_plan_20261111T081109486343Z/run.json",
+          "status": "PREPARED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        }
+      ],
+      "offline_import_and_help_tested": true,
+      "live_execution_in_this_task": false,
+      "live_adapter_status": "SEE_STAGE_EXECUTION_RECORDS",
+      "integration_changes": "Package-qualified imports and configured runtime paths. Multi-stage automatic handoff not implemented."
+    },
+    {
+      "command": "admission",
+      "module": "dc_verify.step.step8.code.source_admission",
+      "original_path": "01_experiments/code/step/step8/code/source_admission.py",
+      "release_path": "src/dc_verify/step/step8/code/source_admission.py",
+      "role": "STEP 8-0: 로컬 자료의 분석 입장과 최종 증빙 사용을 구분하는 Gate.\n\n모델·검색·분석 Agent 호출 없음. guard_claims는 STEP 8-1 출력의 후속 경계다.",
+      "implementation_status": "IMPLEMENTED",
+      "functions_or_classes": [
+        "read_json",
+        "write_json",
+        "digest",
+        "now",
+        "latest_preparation",
+        "date_window",
+        "relation_to_cutoff",
+        "assess_document",
+        "guard_claims",
+        "run_gate",
+        "main"
+      ],
+      "prompt_dependencies": [
+        "dc_verify.step.step8.code.prompt"
+      ],
+      "local_module_dependencies": [
+        "dc_verify.settings",
+        "dc_verify.step.step8.code.prompt"
+      ],
+      "cli_input_output_options": [
+        {
+          "arguments": [
+            "--source-run"
+          ],
+          "settings": {
+            "type": "Path"
+          }
+        },
+        {
+          "arguments": [
+            "--output-dir"
+          ],
+          "settings": {
+            "type": "Path",
+            "default": "stage_data(8) / 'output'"
+          }
+        }
+      ],
+      "stage_execution_records": [
+        {
+          "relative_path": "01_experiments/code/step/step8/data/output/cross_source_20261111T114634884568Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step8/data/output/cross_source_20261111T114529106488Z/run.json",
+          "status": "PREPARED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step8/data/output/external_analysis_20261111T092636663812Z/run.json",
+          "status": "PREPARED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step8/data/output/external_verification_20261111T100854380658Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step8/data/output/external_analysis_20261111T092810288435Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step8/data/output/source_admission_20261111T091444852188Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step8/data/output/source_admission_20261111T091141322203Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step8/data/output/external_verification_20261111T100828062446Z/run.json",
+          "status": "PREPARED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        }
+      ],
+      "offline_import_and_help_tested": true,
+      "live_execution_in_this_task": false,
+      "live_adapter_status": "SEE_STAGE_EXECUTION_RECORDS",
+      "integration_changes": "Package-qualified imports and configured runtime paths. Multi-stage automatic handoff not implemented."
+    },
+    {
+      "command": "external-analysis",
+      "module": "dc_verify.step.step8.code.external_analysis",
+      "original_path": "01_experiments/code/step/step8/code/external_analysis.py",
+      "release_path": "src/dc_verify/step/step8/code/external_analysis.py",
+      "role": "STEP 8-1: 기존 STEP 3 Agent를 호출하고 Admission guard를 적용한다.",
+      "implementation_status": "IMPLEMENTED",
+      "functions_or_classes": [
+        "latest_run",
+        "load_admitted_jobs",
+        "execute",
+        "main"
+      ],
+      "prompt_dependencies": [
+        "dc_verify.step.step8.code.prompt"
+      ],
+      "local_module_dependencies": [
+        "dc_verify.codex",
+        "dc_verify.settings",
+        "dc_verify.step.step3.code",
+        "dc_verify.step.step8.code.prompt",
+        "dc_verify.step.step8.code.source_admission"
+      ],
+      "cli_input_output_options": [
+        {
+          "arguments": [
+            "--source-run"
+          ],
+          "settings": {
+            "type": "Path"
+          }
+        },
+        {
+          "arguments": [
+            "--output-dir"
+          ],
+          "settings": {
+            "type": "Path",
+            "default": "stage_data(8) / 'output'"
+          }
+        },
+        {
+          "arguments": [
+            "--resume"
+          ],
+          "settings": {
+            "type": "Path"
+          }
+        },
+        {
+          "arguments": [
+            "--dry-run"
+          ],
+          "settings": {
+            "action": "'store_true'"
+          }
+        },
+        {
+          "arguments": [
+            "--retry-document"
+          ],
+          "settings": {
+            "action": "'append'",
+            "default": "[]",
+            "help": "'검사 실패로 필요한 Claim이 격리된 문서만 기존 시도 한도 내 재추출'"
+          }
+        }
+      ],
+      "stage_execution_records": [
+        {
+          "relative_path": "01_experiments/code/step/step8/data/output/cross_source_20261111T114634884568Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step8/data/output/cross_source_20261111T114529106488Z/run.json",
+          "status": "PREPARED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step8/data/output/external_analysis_20261111T092636663812Z/run.json",
+          "status": "PREPARED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step8/data/output/external_verification_20261111T100854380658Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step8/data/output/external_analysis_20261111T092810288435Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step8/data/output/source_admission_20261111T091444852188Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step8/data/output/source_admission_20261111T091141322203Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step8/data/output/external_verification_20261111T100828062446Z/run.json",
+          "status": "PREPARED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        }
+      ],
+      "offline_import_and_help_tested": true,
+      "live_execution_in_this_task": false,
+      "live_adapter_status": "SEE_STAGE_EXECUTION_RECORDS",
+      "integration_changes": "Package-qualified imports and configured runtime paths. Multi-stage automatic handoff not implemented."
+    },
+    {
+      "command": "external-verification",
+      "module": "dc_verify.step.step8.code.external_verification",
+      "original_path": "01_experiments/code/step/step8/code/external_verification.py",
+      "release_path": "src/dc_verify/step/step8/code/external_verification.py",
+      "role": "STEP 8-2. Immutable Claim review against downloaded originals, never cross-checks.\n\nReuses STEP4 OCR checks/rendering/FieldChecks, STEP5 ClaimAssessment and policy,\nSTEP8 Admission guard, and the existing fixed-model Responses API adapter.",
+      "implementation_status": "IMPLEMENTED",
+      "functions_or_classes": [
+        "StrictModel",
+        "Correction",
+        "RequirementSupport",
+        "ClaimReview",
+        "DocumentReview",
+        "SemanticAuditRow",
+        "SemanticAudit",
+        "normalize",
+        "html_format_proof",
+        "system_prompt",
+        "load_jobs",
+        "prepare_original",
+        "enforce_review",
+        "reusable_evidence",
+        "assess_document",
+        "audit_semantics",
+        "review_date",
+        "failed_document",
+        "execute",
+        "verify_execution",
+        "main"
+      ],
+      "prompt_dependencies": [
+        "dc_verify.step.step4.code.source_verifier_prompt",
+        "dc_verify.step.step5.code.evidence_prompt",
+        "dc_verify.step.step8.code.prompt"
+      ],
+      "local_module_dependencies": [
+        "dc_verify.codex",
+        "dc_verify.settings",
+        "dc_verify.step.step3.code.analysis",
+        "dc_verify.step.step4.code.source_verifier",
+        "dc_verify.step.step4.code.source_verifier_prompt",
+        "dc_verify.step.step5.code.assess_evidence",
+        "dc_verify.step.step5.code.evidence_prompt",
+        "dc_verify.step.step7.code.document_preparer",
+        "dc_verify.step.step7.code.search_fetcher",
+        "dc_verify.step.step8.code.external_analysis",
+        "dc_verify.step.step8.code.prompt",
+        "dc_verify.step.step8.code.source_admission"
+      ],
+      "cli_input_output_options": [
+        {
+          "arguments": [
+            "--source-run"
+          ],
+          "settings": {
+            "type": "Path"
+          }
+        },
+        {
+          "arguments": [
+            "--output-dir"
+          ],
+          "settings": {
+            "type": "Path",
+            "default": "stage_data(8) / 'output'"
+          }
+        },
+        {
+          "arguments": [
+            "--resume"
+          ],
+          "settings": {
+            "type": "Path"
+          }
+        },
+        {
+          "arguments": [
+            "--dry-run"
+          ],
+          "settings": {
+            "action": "'store_true'"
+          }
+        }
+      ],
+      "stage_execution_records": [
+        {
+          "relative_path": "01_experiments/code/step/step8/data/output/cross_source_20261111T114634884568Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step8/data/output/cross_source_20261111T114529106488Z/run.json",
+          "status": "PREPARED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step8/data/output/external_analysis_20261111T092636663812Z/run.json",
+          "status": "PREPARED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step8/data/output/external_verification_20261111T100854380658Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step8/data/output/external_analysis_20261111T092810288435Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step8/data/output/source_admission_20261111T091444852188Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step8/data/output/source_admission_20261111T091141322203Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step8/data/output/external_verification_20261111T100828062446Z/run.json",
+          "status": "PREPARED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        }
+      ],
+      "offline_import_and_help_tested": true,
+      "live_execution_in_this_task": false,
+      "live_adapter_status": "SEE_STAGE_EXECUTION_RECORDS",
+      "integration_changes": "Package-qualified imports and configured runtime paths. Multi-stage automatic handoff not implemented."
+    },
+    {
+      "command": "cross-check",
+      "module": "dc_verify.step.step8.code.cross_source",
+      "original_path": "01_experiments/code/step/step8/code/cross_source.py",
+      "release_path": "src/dc_verify/step/step8/code/cross_source.py",
+      "role": "STEP 8-3: validated inventory -> deterministic pairs -> fixed-model cross-check.\n\nNo new search, extraction, Claim correction, independent-source promotion,\nfinal facility comparison, or Controller decision is performed here.",
+      "implementation_status": "IMPLEMENTED",
+      "functions_or_classes": [
+        "StrictModel",
+        "Dimensions",
+        "response_schema",
+        "pair_payload",
+        "references",
+        "quantities",
+        "guard_pair",
+        "repair_pair",
+        "local_diagnostic",
+        "execute",
+        "verify_execution",
+        "main"
+      ],
+      "prompt_dependencies": [
+        "dc_verify.step.step8.code.prompt"
+      ],
+      "local_module_dependencies": [
+        "dc_verify.codex",
+        "dc_verify.settings",
+        "dc_verify.step.step8.code.cross_source_input",
+        "dc_verify.step.step8.code.pair_matcher",
+        "dc_verify.step.step8.code.prompt",
+        "dc_verify.step.step8.code.source_admission"
+      ],
+      "cli_input_output_options": [
+        {
+          "arguments": [
+            "--source-run"
+          ],
+          "settings": {
+            "type": "Path"
+          }
+        },
+        {
+          "arguments": [
+            "--output-dir"
+          ],
+          "settings": {
+            "type": "Path",
+            "default": "stage_data(8) / 'output'"
+          }
+        },
+        {
+          "arguments": [
+            "--resume"
+          ],
+          "settings": {
+            "type": "Path"
+          }
+        },
+        {
+          "arguments": [
+            "--dry-run"
+          ],
+          "settings": {
+            "action": "'store_true'"
+          }
+        },
+        {
+          "arguments": [
+            "--max-pairs"
+          ],
+          "settings": {
+            "type": "int",
+            "default": "24"
+          }
+        },
+        {
+          "arguments": [
+            "--max-diagnostics"
+          ],
+          "settings": {
+            "type": "int",
+            "default": "12"
+          }
+        },
+        {
+          "arguments": [
+            "--batch-size"
+          ],
+          "settings": {
+            "type": "int",
+            "default": "6"
+          }
+        },
+        {
+          "arguments": [
+            "--revalidate"
+          ],
+          "settings": {
+            "action": "'store_true'",
+            "help": "'Reapply code guards to unchanged cached inputs/pairs, preserving actual API prompts'"
+          }
+        }
+      ],
+      "stage_execution_records": [
+        {
+          "relative_path": "01_experiments/code/step/step8/data/output/cross_source_20261111T114634884568Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step8/data/output/cross_source_20261111T114529106488Z/run.json",
+          "status": "PREPARED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step8/data/output/external_analysis_20261111T092636663812Z/run.json",
+          "status": "PREPARED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step8/data/output/external_verification_20261111T100854380658Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step8/data/output/external_analysis_20261111T092810288435Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step8/data/output/source_admission_20261111T091444852188Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step8/data/output/source_admission_20261111T091141322203Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step8/data/output/external_verification_20261111T100828062446Z/run.json",
+          "status": "PREPARED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        }
+      ],
+      "offline_import_and_help_tested": true,
+      "live_execution_in_this_task": false,
+      "live_adapter_status": "SEE_STAGE_EXECUTION_RECORDS",
+      "integration_changes": "Package-qualified imports and configured runtime paths. Multi-stage automatic handoff not implemented."
+    },
+    {
+      "command": "controller",
+      "module": "dc_verify.step.step9.code.controller",
+      "original_path": "01_experiments/code/step/step9/code/controller.py",
+      "release_path": "src/dc_verify/step/step9/code/controller.py",
+      "role": "STEP9 orchestration. Reuses the STEP6 Controller; selects work without running it.",
+      "implementation_status": "IMPLEMENTED",
+      "functions_or_classes": [
+        "execute",
+        "verify_execution",
+        "main"
+      ],
+      "prompt_dependencies": [
+        "dc_verify.step.step9.code.prompt"
+      ],
+      "local_module_dependencies": [
+        "dc_verify.codex",
+        "dc_verify.settings",
+        "dc_verify.step.step6.code.controller_replan",
+        "dc_verify.step.step8.code.cross_source_input",
+        "dc_verify.step.step8.code.source_admission",
+        "dc_verify.step.step9.code.prompt",
+        "dc_verify.step.step9.code.state_restoration"
+      ],
+      "cli_input_output_options": [
+        {
+          "arguments": [
+            "--source-run"
+          ],
+          "settings": {
+            "type": "Path"
+          }
+        },
+        {
+          "arguments": [
+            "--runtime-file"
+          ],
+          "settings": {
+            "type": "Path",
+            "default": "stage_data(9) / 'runtime_tools.json'"
+          }
+        },
+        {
+          "arguments": [
+            "--output-dir"
+          ],
+          "settings": {
+            "type": "Path",
+            "default": "stage_data(9) / 'output'"
+          }
+        },
+        {
+          "arguments": [
+            "--resume"
+          ],
+          "settings": {
+            "type": "Path"
+          }
+        },
+        {
+          "arguments": [
+            "--dry-run"
+          ],
+          "settings": {
+            "action": "'store_true'"
+          }
+        }
+      ],
+      "stage_execution_records": [
+        {
+          "relative_path": "01_experiments/code/step/step9/data/output/controller_cycle_20261111T121808401551Z/run.json",
+          "status": "PREPARED",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        },
+        {
+          "relative_path": "01_experiments/code/step/step9/data/output/controller_cycle_20261111T121813701453Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        }
+      ],
+      "offline_import_and_help_tested": true,
+      "live_execution_in_this_task": false,
+      "live_adapter_status": "SEE_STAGE_EXECUTION_RECORDS",
+      "integration_changes": "Package-qualified imports and configured runtime paths. Multi-stage automatic handoff not implemented."
+    },
+    {
+      "command": "report",
+      "module": "dc_verify.step.step10.code.report_builder",
+      "original_path": "01_experiments/code/step/step10/code/report_builder.py",
+      "release_path": "src/dc_verify/step/step10/code/report_builder.py",
+      "role": "STEP10 offline report builder. No model, search, source promotion or workflow execution.",
+      "implementation_status": "IMPLEMENTED",
+      "functions_or_classes": [
+        "safe_url",
+        "safe_csv",
+        "normalize_pair_time",
+        "workflow_view",
+        "load_inputs",
+        "source_snapshots",
+        "evidence_rows",
+        "build_report",
+        "render_html",
+        "validate_report",
+        "build",
+        "main"
+      ],
+      "prompt_dependencies": [
+        "dc_verify.step.step10.code.prompt"
+      ],
+      "local_module_dependencies": [
+        "dc_verify.settings",
+        "dc_verify.step.step10.code.prompt",
+        "dc_verify.step.step6.code.controller_replan",
+        "dc_verify.step.step7.code.document_preparer",
+        "dc_verify.step.step8.code.cross_source_input",
+        "dc_verify.step.step8.code.source_admission",
+        "dc_verify.step.step9.code.state_restoration"
+      ],
+      "cli_input_output_options": [
+        {
+          "arguments": [
+            "--source-run"
+          ],
+          "settings": {
+            "type": "Path"
+          }
+        },
+        {
+          "arguments": [
+            "--output-dir"
+          ],
+          "settings": {
+            "type": "Path",
+            "default": "stage_data(10) / 'output'"
+          }
+        },
+        {
+          "arguments": [
+            "--policy-file"
+          ],
+          "settings": {
+            "type": "Path",
+            "default": "report_policy_path()"
+          }
+        }
+      ],
+      "stage_execution_records": [
+        {
+          "relative_path": "01_experiments/code/step/step10/data/output/review_report_20261111T124219779051Z/run.json",
+          "status": "SUCCESS",
+          "note": "Stage-level execution evidence, not proof every API adapter ran live."
+        }
+      ],
+      "offline_import_and_help_tested": true,
+      "live_execution_in_this_task": false,
+      "live_adapter_status": "SEE_STAGE_EXECUTION_RECORDS",
+      "integration_changes": "Package-qualified imports and configured runtime paths. Multi-stage automatic handoff not implemented."
+    }
+  ],
+  "latest_functional_recheck": "manifests/functional_recheck.json"
+}
