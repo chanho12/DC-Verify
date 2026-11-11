@@ -4,9 +4,7 @@
 API.env
 *.env
 !*.env.example
-data/runtime/
-data/seed/*
-!data/seed/README.md
+data/
 .venv/
 venv/
 __pycache__/
